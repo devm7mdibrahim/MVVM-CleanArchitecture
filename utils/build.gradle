@@ -1,0 +1,76 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 31
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    def hilt_version = "2.38.1"
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    kapt "androidx.hilt:hilt-compiler:1.0.0"
+
+    api 'androidx.core:core-ktx:1.7.0'
+    api 'androidx.appcompat:appcompat:1.4.1'
+    api 'com.google.android.material:material:1.5.0'
+
+    api 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    api 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    api 'com.jakewharton.rxbinding4:rxbinding:4.0.0'
+    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    api 'com.github.bumptech.glide:glide:4.12.0'
+    kapt 'com.github.bumptech.glide:compiler:4.12.0'
+
+    api "io.nlopez.smartlocation:rx:3.3.3"
+    api 'com.karumi:dexter:6.2.2'
+    api 'com.akexorcist:localization:1.2.10'
+    api "org.greenrobot:eventbus:3.2.0"
+
+    api 'com.tuyenmonkey:mkloader:1.4.0'
+    api 'com.github.GrenderG:Toasty:1.5.2'
+    api "de.hdodenhof:circleimageview:3.1.0"
+    api 'com.makeramen:roundedimageview:2.3.0'
+    api 'com.github.iwgang:countdownview:2.1.6'
+    api 'com.alimuzaffar.lib:pinentryedittext:2.0.6'
+
+
+    api "com.intuit.sdp:sdp-android:1.0.6"
+    api "com.intuit.ssp:ssp-android:1.0.6"
+
+    //google services
+    api "com.google.android.gms:play-services-maps:18.0.2"
+    api "com.google.maps:google-maps-services:0.1.20"
+    api "com.google.android.gms:play-services-location:19.0.1"
+    api "com.google.android.libraries.places:places:2.5.0"
+    api "com.google.android.gms:play-services-places:17.0.0"
+}

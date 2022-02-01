@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Base Modules</string>
+
+    <string name="error_timeout">Timeout, please try again</string>
+    <string name="error_unknown">Something went wrong, please try again</string>
+    <string name="error_server">Something went wrong, please try again later</string>
+    <string name="error_not_found">Something went wrong, please try again later</string>
+    <string name="error_connection">No internet connection</string>
+    <string name="error_unauthorized">UnAuthorized user</string>
+    <string name="error_invalid_phone">Invalid phone number</string>
+    <string name="error_invalid_name">Invalid user name</string>
+    <string name="error_invalid_password">Invalid password</string>
+    <string name="error_invalid_confirmation_password">Invalid confirmation password</string>
+    <string name="error_invalid_email">Invalid email address</string>
+    <string name="error_invalid_country_iso">Invalid country iso</string>
+    <string name="error_invalid_device_id">Invalid device id</string>
+    <string name="error_invalid_verification_code">Please enter the verification code before confirm</string>
+</resources>

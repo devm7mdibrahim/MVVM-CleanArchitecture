@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_ok">OK</string>
+    <string name="text_cancel">Cancel</string>
+    <string name="sar">SAR</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="text_alert">Alert</string>
+    <string name="text_are_you_sure_logout">Are you sure you want to logout?</string>
+    <string name="text_are_must_login_to_continue">You must login to continue</string>
+</resources>
