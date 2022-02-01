@@ -1,6 +1,7 @@
 package com.aait.data.local.utils
 
 object PreferenceConstants {
+    const val PREFERENCE_NAME = "base_preferences"
     const val IS_ARABIC = "isArabic"
     const val LANGUAGE = "language"
     const val TOKEN = "token"
