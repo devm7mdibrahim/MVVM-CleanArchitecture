@@ -7,7 +7,9 @@ import com.aait.domain.exceptions.ValidationException
 import com.aait.domain.util.DataState
 import com.aait.sa.R
 import com.aait.sa.base.BaseFragment
+import com.aait.sa.base.util.applyCommonSideEffects
 import com.aait.sa.databinding.FragmentRegisterBinding
+import com.aait.utils.common.onPrintLog
 import com.aait.utils.common.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
@@ -59,12 +61,12 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
                                 requireContext().showToast(getString(R.string.error_invalid_email))
                             }
                             else -> {
-                                it.applyCommonSideEffects()
+                                it.applyCommonSideEffects(this@RegisterFragment)
                             }
                         }
                     }
                     else -> {
-                        it.applyCommonSideEffects {
+                        it.applyCommonSideEffects(this@RegisterFragment) {
                             it.data?.onPrintLog("userData")
                         }
                     }
