@@ -12,6 +12,15 @@ object NetworkConstants {
         const val ENGLISH = "en"
     }
 
+    object RequestKeys{
+        const val SUCCESS = "success"
+        const val FAIL = "fail"
+        const val NEED_ACTIVE = "needActive"
+        const val UN_AUTH = "unauthenticated"
+        const val BLOCKED = "blocked"
+        const val EXCEPTION = "exception"
+    }
+
     object NetworkParams {
         const val PHONE = "phone"
         const val PASSWORD = "password"

@@ -3,6 +3,7 @@
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.8">
       <module name="base-modularized.app" target="11" />
+      <module name="base-modularized.buildSrc" target="11" />
       <module name="base-modularized.data" target="11" />
       <module name="base-modularized.utils" target="11" />
       <module name="base-modules.app" target="11" />

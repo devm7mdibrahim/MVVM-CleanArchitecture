@@ -1,11 +1,14 @@
 package com.aait.data.remote.utils
 
 import com.aait.data.remote.utils.NetworkConstants.NETWORK_TIMEOUT
+import com.aait.data.remote.utils.NetworkConstants.RequestKeys.BLOCKED
+import com.aait.data.remote.utils.NetworkConstants.RequestKeys.EXCEPTION
+import com.aait.data.remote.utils.NetworkConstants.RequestKeys.FAIL
+import com.aait.data.remote.utils.NetworkConstants.RequestKeys.NEED_ACTIVE
+import com.aait.data.remote.utils.NetworkConstants.RequestKeys.SUCCESS
+import com.aait.data.remote.utils.NetworkConstants.RequestKeys.UN_AUTH
 import com.aait.domain.entities.BaseResponse
 import com.aait.domain.exceptions.NetworkExceptions
-import com.aait.domain.util.Constants
-import com.aait.domain.util.Constants.FAIL
-import com.aait.domain.util.Constants.SUCCESS
 import com.aait.domain.util.DataState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.TimeoutCancellationException
@@ -31,25 +34,24 @@ suspend fun <T> safeApiCall(
 fun <T> handleSuccess(response: T): DataState<T> {
     if (response != null) {
         val baseResponse = response as BaseResponse<*>
-        if (baseResponse.key == SUCCESS) {
-            if (baseResponse.userStatus == Constants.ACTIVE
-                || baseResponse.userStatus == Constants.PENDING
-                || baseResponse.userStatus.isEmpty()
-            ) {
-                return if (baseResponse.code == Constants.SUCCESS_CODE) {
-                    DataState.Success(response)
-                } else {
-                    DataState.Error(NetworkExceptions.CustomException(baseResponse.msg))
-                }
-            } else if (baseResponse.userStatus == Constants.BLOCK) {
-                return DataState.Error(NetworkExceptions.AuthorizationException)
+        return when (baseResponse.key) {
+            SUCCESS -> {
+                DataState.Success(response)
             }
-        } else if (baseResponse.key == FAIL) {
-            return if (baseResponse.code == Constants.UNAUTHORIZED_CODE) {
-                DataState.Error(NetworkExceptions.AuthorizationException)
-            } else {
+            FAIL -> {
                 DataState.Error(NetworkExceptions.CustomException(baseResponse.msg))
             }
+            NEED_ACTIVE -> {
+                DataState.Error(NetworkExceptions.NeedActiveException(baseResponse.msg))
+            }
+            UN_AUTH, BLOCKED -> {
+                DataState.Error(NetworkExceptions.AuthorizationException)
+            }
+            EXCEPTION -> {
+                DataState.Error(NetworkExceptions.CustomException(baseResponse.msg))
+            }
+            else ->
+                DataState.Error(NetworkExceptions.UnknownException)
         }
     }
 

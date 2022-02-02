@@ -4,8 +4,7 @@ import com.aait.domain.exceptions.NetworkExceptions
 import com.aait.sa.R
 
 
-fun Throwable.getIsCommonException(): Int? {
-
+fun Throwable.getIsCommonException(): Int {
     when (this) {
         is NetworkExceptions.ConnectionException -> {
             return R.string.error_connection
@@ -28,7 +27,7 @@ fun Throwable.getIsCommonException(): Int? {
         }
 
         else -> {
-            return null
+            return R.string.error_unknown
         }
     }
 }

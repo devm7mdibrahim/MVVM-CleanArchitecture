@@ -7,4 +7,5 @@
     <string name="text_alert">Alert</string>
     <string name="text_are_you_sure_logout">Are you sure you want to logout?</string>
     <string name="text_are_must_login_to_continue">You must login to continue</string>
+    <string name="block_massage">Your account has been blocked or deleted. In the event of an error, please contact the application administration.</string>
 </resources>
