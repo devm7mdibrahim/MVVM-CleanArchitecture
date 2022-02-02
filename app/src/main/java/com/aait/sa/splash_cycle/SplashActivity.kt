@@ -20,30 +20,30 @@ class SplashActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-//        lifecycleScope.launchWhenCreated {
-//            delay(2000)
-//
-//            val token = preferenceRepository.getToken().first()
-//
-//            if (token.isNotEmpty()) {
-//                openHomeActivity()
-//            } else {
-//                openAuthActivity()
-//            }
-//        }
+        lifecycleScope.launchWhenCreated {
+            delay(2000)
+
+            val token = preferenceRepository.getToken().first()
+
+            if (token.isNotEmpty()) {
+                openHomeActivity()
+            } else {
+                openAuthActivity()
+            }
+        }
     }
 
-//    private fun openHomeActivity() {
-//        Intent(this@SplashActivity, HomeActivity::class.java)
-//            .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK).also {
-//                startActivity(it)
-//            }
-//    }
-//
-//    private fun openAuthActivity() {
-//        Intent(this@SplashActivity, AuthActivity::class.java)
-//            .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK).also {
-//                startActivity(it)
-//            }
-//    }
+    private fun openHomeActivity() {
+        Intent(this@SplashActivity, HomeActivity::class.java)
+            .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK).also {
+                startActivity(it)
+            }
+    }
+
+    private fun openAuthActivity() {
+        Intent(this@SplashActivity, AuthActivity::class.java)
+            .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK).also {
+                startActivity(it)
+            }
+    }
 }

@@ -12,9 +12,8 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
-
 @Singleton
-class ProgressUtil @Inject constructor(@ApplicationContext val context: Context) {
+class ProgressUtil @Inject constructor(val context: Context) {
 
 
     private var dialog: AlertDialog? = null

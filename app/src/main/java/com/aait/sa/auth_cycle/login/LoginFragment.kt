@@ -13,6 +13,7 @@ import com.aait.utils.common.fetchText
 import com.aait.utils.common.showToast
 import com.aait.utils.common.toJson
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 
 @AndroidEntryPoint

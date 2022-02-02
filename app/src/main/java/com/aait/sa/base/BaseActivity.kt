@@ -8,8 +8,8 @@ import javax.inject.Inject
 
 abstract class BaseActivity : LocalizationActivity(){
 
-//    @Inject
-//    lateinit var preferenceRepository: PreferenceRepository
+    @Inject
+    lateinit var preferenceRepository: PreferenceRepository
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {

@@ -11,6 +11,7 @@ import com.aait.sa.databinding.FragmentRegisterBinding
 import com.aait.utils.common.onPrintLog
 import com.aait.utils.common.showToast
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterBinding::inflate) {

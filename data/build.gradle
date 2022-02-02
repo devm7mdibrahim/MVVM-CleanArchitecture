@@ -55,11 +55,11 @@ dependencies {
     implementation Dependencies.datastore
     implementation Dependencies.datastore_preference
 
-    implementation Dependencies.retrofit
-    implementation Dependencies.logging_interceptor
-    implementation Dependencies.moshi_converter
-    implementation Dependencies.moshi_kotlin
-    implementation Dependencies.gson
+    api Dependencies.retrofit
+    api Dependencies.logging_interceptor
+    api Dependencies.moshi_converter
+    api Dependencies.moshi_kotlin
+    api Dependencies.gson
 
     implementation Dependencies.room_runtime
     implementation Dependencies.room_ktx
