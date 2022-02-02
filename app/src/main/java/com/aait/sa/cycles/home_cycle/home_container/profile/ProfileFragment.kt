@@ -1,4 +1,4 @@
-package com.aait.sa.home_cycle.home_container.profile
+package com.aait.sa.cycles.home_cycle.home_container.profile
 
 import androidx.fragment.app.viewModels
 import com.aait.sa.base.BaseFragment

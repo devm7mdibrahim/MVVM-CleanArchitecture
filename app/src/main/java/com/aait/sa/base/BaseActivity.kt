@@ -2,22 +2,21 @@ package com.aait.sa.base
 
 import android.view.MenuItem
 import com.aait.domain.repository.PreferenceRepository
-import com.aait.sa.R
 import com.akexorcist.localizationactivity.ui.LocalizationActivity
 import javax.inject.Inject
 
-abstract class BaseActivity : LocalizationActivity(){
+abstract class BaseActivity : LocalizationActivity() {
 
     @Inject
     lateinit var preferenceRepository: PreferenceRepository
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        /*when (item.itemId) {
 //            R.id.home -> {
 //                onBackPressed()
 //                return true
 //            }
-        }
+        }*/
         return super.onOptionsItemSelected(item)
     }
 
@@ -29,5 +28,4 @@ abstract class BaseActivity : LocalizationActivity(){
     override fun onAfterLocaleChanged() {
 
     }
-
 }

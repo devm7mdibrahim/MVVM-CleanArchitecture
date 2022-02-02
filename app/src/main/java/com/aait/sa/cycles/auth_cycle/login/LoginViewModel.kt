@@ -1,4 +1,4 @@
-package com.aait.sa.auth_cycle.login
+package com.aait.sa.cycles.auth_cycle.login
 
 import androidx.lifecycle.viewModelScope
 import com.aait.domain.entities.AuthData

@@ -11,7 +11,7 @@ import com.aait.data.remote.utils.NetworkConstants.Languages.ARABIC
 import com.aait.domain.repository.PreferenceRepository
 import com.aait.sa.R
 import com.aait.sa.base.BaseApp.Companion.CHANNEL_ID
-import com.aait.sa.home_cycle.HomeActivity
+import com.aait.sa.cycles.home_cycle.HomeActivity
 import com.aait.utils.common.fromJson
 import com.aait.utils.common.onPrintLog
 import com.aait.utils.common.toJson

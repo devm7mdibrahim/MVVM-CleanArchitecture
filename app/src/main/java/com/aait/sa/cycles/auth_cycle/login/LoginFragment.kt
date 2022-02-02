@@ -1,72 +1,70 @@
-package com.aait.sa.auth_cycle.register
+package com.aait.sa.cycles.auth_cycle.login
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.aait.domain.entities.AuthData
 import com.aait.domain.exceptions.ValidationException
 import com.aait.domain.util.DataState
 import com.aait.sa.R
 import com.aait.sa.base.BaseFragment
-import com.aait.sa.databinding.FragmentRegisterBinding
-import com.aait.utils.common.onPrintLog
+import com.aait.sa.base.util.applyCommonSideEffects
+import com.aait.sa.databinding.FragmentLoginBinding
+import com.aait.utils.common.fetchText
 import com.aait.utils.common.showToast
+import com.aait.utils.common.toJson
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.first
 
 @AndroidEntryPoint
-class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterBinding::inflate) {
+class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::inflate) {
 
-    private var avatar: String? = null
-    override val viewModel by viewModels<RegisterViewModel>()
+    override val viewModel by viewModels<LoginViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        registerListener()
+        loginListener()
     }
 
     override fun onCreateView() {
-        TODO("When click register button call ${register()} function")
+        binding.btnLogin.setOnClickListener {
+            login()
+        }
     }
 
-    private fun register() {
+    private fun login() {
         lifecycleScope.launchWhenCreated {
-            viewModel.registerResponse.emit(DataState.Idle)
-            viewModel.register(
-                name= "Mohamed",
-                phone = "01024510687",
-                email = "mohamed@gmail.com",
-                password = "123456",
-                avatar = avatar
+            viewModel.loginResponse.emit(DataState.Idle)
+            viewModel.login(
+                phone = binding.etPhone.fetchText(),
+                password = binding.etPassword.fetchText(),
+                deviceId = viewModel.preferenceRepository.getFirebaseToken().first(),
             )
         }
     }
 
-    private fun registerListener() {
+    private fun loginListener() {
         lifecycleScope.launchWhenCreated {
-            viewModel.registerResponse.collect { it ->
+            viewModel.loginResponse.collect { it ->
                 when (it) {
                     is DataState.Error -> {
                         when (it.throwable) {
+
                             is ValidationException.InValidPhoneException -> {
                                 requireContext().showToast(getString(R.string.error_invalid_phone))
                             }
                             is ValidationException.InValidPasswordException -> {
                                 requireContext().showToast(getString(R.string.error_invalid_password))
                             }
-                            is ValidationException.InValidNameException -> {
-                                requireContext().showToast(getString(R.string.error_invalid_name))
-                            }
-                            is ValidationException.InValidEmailAddressException -> {
-                                requireContext().showToast(getString(R.string.error_invalid_email))
-                            }
                             else -> {
-                                it.applyCommonSideEffects()
+                                it.applyCommonSideEffects(this@LoginFragment)
                             }
                         }
                     }
                     else -> {
-                        it.applyCommonSideEffects {
-                            it.data?.onPrintLog("userData")
+                        it.applyCommonSideEffects(this@LoginFragment) {
+                            it.data?.let { userData -> saveUserData(userData) }
                         }
                     }
                 }
@@ -74,4 +72,10 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
         }
     }
 
+    private fun saveUserData(data: AuthData) {
+        lifecycleScope.launchWhenCreated {
+            viewModel.preferenceRepository.setToken(data.token)
+            viewModel.preferenceRepository.setUserData(data.user.toJson())
+        }
+    }
 }

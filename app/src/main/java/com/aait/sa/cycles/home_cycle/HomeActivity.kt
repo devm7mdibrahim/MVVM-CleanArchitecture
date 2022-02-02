@@ -1,4 +1,4 @@
-package com.aait.sa.auth_cycle
+package com.aait.sa.cycles.home_cycle
 
 import android.os.Bundle
 import com.aait.sa.R
@@ -6,9 +6,9 @@ import com.aait.sa.base.BaseActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class AuthActivity : BaseActivity() {
+class HomeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auth)
+        setContentView(R.layout.activity_home)
     }
 }

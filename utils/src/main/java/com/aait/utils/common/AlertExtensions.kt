@@ -30,10 +30,19 @@ fun Context.showAlertDialog(
         .show()
 }
 
- fun Context.openLoginDialog(listener: (Boolean) -> Unit) {
+fun Context.openLoginDialog(listener: (Boolean) -> Unit) {
     showAlertDialog(
         getString(R.string.text_alert),
         getString(R.string.text_are_must_login_to_continue)
+    ) {
+        listener(it)
+    }
+}
+
+fun Context.openAccountDeletedDialog(listener: (Boolean) -> Unit) {
+    showAlertDialog(
+        getString(R.string.text_alert),
+        getString(R.string.block_massage)
     ) {
         listener(it)
     }

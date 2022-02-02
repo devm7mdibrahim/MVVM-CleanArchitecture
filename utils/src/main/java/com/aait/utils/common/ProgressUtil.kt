@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.Window
 import com.aait.utils.R
-import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -18,17 +17,15 @@ class ProgressUtil @Inject constructor(val context: Context) {
 
     private var dialog: AlertDialog? = null
 
-
     init {
         init()
     }
-
 
     private fun init() {
         dialog = AlertDialog.Builder(context).create()
         val inflate = LayoutInflater.from(context).inflate(R.layout.progress, null)
         dialog?.setView(inflate)
-        dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog?.setCancelable(false)
 
         if (dialog?.window != null) {
@@ -37,7 +34,7 @@ class ProgressUtil @Inject constructor(val context: Context) {
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
                 )
-            dialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
         }
     }
 
@@ -56,6 +53,12 @@ class ProgressUtil @Inject constructor(val context: Context) {
         }
     }
 
-    fun isLoading(): Boolean = dialog?.isShowing == true
+    fun statusProgress(status: Boolean) {
+        if (status) {
+            showProgress()
+        } else {
+            hideProgress()
+        }
+    }
 
 }

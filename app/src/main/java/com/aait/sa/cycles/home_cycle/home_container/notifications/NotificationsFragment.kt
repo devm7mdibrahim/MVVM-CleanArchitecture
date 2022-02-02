@@ -1,4 +1,4 @@
-package com.aait.sa.home_cycle.home_container.notifications
+package com.aait.sa.cycles.home_cycle.home_container.notifications
 
 import androidx.fragment.app.viewModels
 import com.aait.sa.base.BaseFragment

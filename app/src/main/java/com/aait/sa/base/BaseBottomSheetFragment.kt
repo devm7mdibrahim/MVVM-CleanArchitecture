@@ -9,19 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
-import com.aait.domain.entities.BaseResponse
-import com.aait.domain.exceptions.NetworkExceptions
-import com.aait.domain.util.DataState
-import com.aait.sa.auth_cycle.AuthActivity
-import com.aait.utils.common.NetworkHelper
-import com.aait.utils.common.ProgressUtil
-import com.aait.utils.common.ToastType
-import com.aait.utils.common.showToast
+import com.aait.sa.base.util.NetworkExtensionsActions
+import com.aait.sa.cycles.auth_cycle.AuthActivity
+import com.aait.utils.common.*
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import javax.inject.Inject
 
 abstract class BaseBottomSheetFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) :
-    BottomSheetDialogFragment() {
+    BottomSheetDialogFragment(), NetworkExtensionsActions {
 
     @Inject
     lateinit var progressUtil: ProgressUtil
@@ -56,56 +51,33 @@ abstract class BaseBottomSheetFragment<VB : ViewBinding>(private val inflate: In
         setStyle(STYLE_NORMAL, com.aait.utils.R.style.bottomSheetDialogStyle)
     }
 
-    fun <T> DataState<T>.applyCommonSideEffects(
-        showLoading: Boolean = true,
-        showSuccessToast: Boolean = true,
-        showErrorToast: Boolean = true,
-        onSuccess: (T) -> Unit = {}
-    ) {
-        when (this) {
-            is DataState.Loading -> {
-                if (showLoading) {
-                    progressUtil.showProgress()
-                }
-            }
+    override fun onLoad(showLoading: Boolean) {
+        progressUtil.statusProgress(showLoading)
+    }
 
-            is DataState.Success -> {
-                if (showLoading) {
-                    progressUtil.hideProgress()
-                }
-                if (showSuccessToast) requireContext().showToast(
-                    (data as BaseResponse<*>).msg,
-                    ToastType.SUCCESS
-                )
-                onSuccess(this.data)
-            }
+    override fun onCommonError(exceptionMsgId: Int) {
+        requireContext().showToast(getString(exceptionMsgId))
+    }
 
-            is DataState.Error -> {
-                if (showLoading) progressUtil.hideProgress()
-                handleError(throwable = throwable, showErrorToast = showErrorToast)
-            }
-            DataState.Idle -> {
-            }
+    override fun onShowSuccessToast(msg: String?) {
+        requireContext().showToast(msg, ToastType.SUCCESS)
+    }
+
+    override fun onFail(msg: String?) {
+        requireContext().showToast(msg)
+    }
+
+    override fun authorizationNeedActive(msg: String) {
+        requireContext().showToast(msg, ToastType.WARNING)
+    }
+
+    override fun authorizationFail() {
+        requireContext().openAccountDeletedDialog {
+            onLogout()
         }
     }
 
-    private fun handleError(throwable: Throwable, showErrorToast: Boolean) {
-        throwable.getIsCommonException()?.let {
-            requireContext().showToast(getString(it))
-        } ?: kotlin.run {
-            when (throwable) {
-                is NetworkExceptions.AuthorizationException -> {
-                    onLogout()
-                }
-
-                is NetworkExceptions.CustomException -> {
-                    if (showErrorToast) requireContext().showToast(throwable.msg)
-                }
-            }
-        }
-    }
-
-    protected fun onLogout() {
+    private fun onLogout() {
         lifecycleScope.launchWhenCreated {
             viewModel.preferenceRepository.onLogout()
             openAuthActivity()

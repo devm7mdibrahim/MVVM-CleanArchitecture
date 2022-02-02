@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/homeContainerFragment"
-        android:name="com.aait.sa.home_cycle.home_container.HomeContainerFragment"
+        android:name="com.aait.sa.cycles.home_cycle.home_container.HomeContainerFragment"
         android:label="fragment_home_container" />
 </navigation>

@@ -8,4 +8,5 @@ sealed class NetworkExceptions : Exception() {
     object ConnectionException : NetworkExceptions()
     object AuthorizationException : NetworkExceptions()
     data class CustomException(val msg: String) : NetworkExceptions()
+    data class NeedActiveException(val msg: String) : NetworkExceptions()
 }

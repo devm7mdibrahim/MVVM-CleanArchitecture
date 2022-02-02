@@ -1,4 +1,4 @@
-package com.aait.sa.auth_cycle.register
+package com.aait.sa.cycles.auth_cycle.register
 
 import androidx.lifecycle.viewModelScope
 import com.aait.domain.entities.AuthData

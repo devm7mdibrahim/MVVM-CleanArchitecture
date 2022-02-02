@@ -1,13 +1,13 @@
-package com.aait.sa.splash_cycle
+package com.aait.sa.cycles.splash_cycle
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import com.aait.sa.R
-import com.aait.sa.auth_cycle.AuthActivity
 import com.aait.sa.base.BaseActivity
-import com.aait.sa.home_cycle.HomeActivity
+import com.aait.sa.cycles.auth_cycle.AuthActivity
+import com.aait.sa.cycles.home_cycle.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
@@ -16,6 +16,7 @@ import kotlinx.coroutines.flow.first
 @AndroidEntryPoint
 class SplashActivity : BaseActivity() {
 
+    @SuppressLint("MissingSuperCall")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)

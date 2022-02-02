@@ -5,14 +5,14 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.aait.sa.home_cycle.home_container.home.HomeFragment"
+        android:name="com.aait.sa.cycles.home_cycle.home_container.home.HomeFragment"
         android:label="home" />
     <fragment
         android:id="@+id/notificationsFragment"
-        android:name="com.aait.sa.home_cycle.home_container.notifications.NotificationsFragment"
+        android:name="com.aait.sa.cycles.home_cycle.home_container.notifications.NotificationsFragment"
         android:label="notifications" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.aait.sa.home_cycle.home_container.profile.ProfileFragment"
+        android:name="com.aait.sa.cycles.home_cycle.home_container.profile.ProfileFragment"
         android:label="profile" />
 </navigation>

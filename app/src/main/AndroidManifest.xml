@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BaseModules">
         <activity
-            android:name=".splash_cycle.SplashActivity"
+            android:name="com.aait.sa.cycles.splash_cycle.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,8 +25,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".auth_cycle.AuthActivity" />
-        <activity android:name=".home_cycle.HomeActivity" />
+        <activity android:name="com.aait.sa.cycles.auth_cycle.AuthActivity" />
+        <activity android:name="com.aait.sa.cycles.home_cycle.HomeActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"

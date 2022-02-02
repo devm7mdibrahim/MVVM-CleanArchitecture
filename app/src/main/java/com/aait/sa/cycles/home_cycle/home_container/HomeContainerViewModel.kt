@@ -1,10 +1,10 @@
-package com.aait.sa.home_cycle.home_container.profile
+package com.aait.sa.cycles.home_cycle.home_container
 
 import com.aait.sa.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class ProfileViewModel @Inject constructor() : BaseViewModel() {
+class HomeContainerViewModel @Inject constructor() : BaseViewModel() {
     // TODO: Implement the ViewModel
 }
