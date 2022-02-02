@@ -38,39 +38,40 @@ android {
             buildConfigField("String", "SOCKET_PORT","\"${myConfigProperties['SocketPort']}\"")
         }
     }
+    kapt {
+        javacOptions {
+            // These options are normally set automatically via the Hilt Gradle plugin, but we
+            // set them manually to workaround a bug in the Kotlin 1.5.20
+            option("-Adagger.fastInit=ENABLED")
+            option("-Adagger.hilt.android.internal.disableAndroidSuperclassValidation=true")
+        }
+    }
 }
 
 
 dependencies {
     api project(':domain')
 
-    //retrofit for network calling
-    def retrofit_version = "2.9.0"
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
-    implementation "com.github.ihsanbal:LoggingInterceptor:3.0.0"
-    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
+    implementation Dependencies.datastore
+    implementation Dependencies.datastore_preference
 
-    //room for local caching large data
-    def room_version = "2.4.1"
-    implementation "androidx.room:room-runtime:$room_version"
-    implementation "androidx.room:room-ktx:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
+    implementation Dependencies.retrofit
+    implementation Dependencies.logging_interceptor
+    implementation Dependencies.moshi_converter
+    implementation Dependencies.moshi_kotlin
+    implementation Dependencies.gson
 
-    //datastore for local cashing in key and value
-    def data_store_version = "1.0.0"
-    implementation "androidx.datastore:datastore-core:$data_store_version"
-    implementation "androidx.datastore:datastore-preferences:$data_store_version"
+    implementation Dependencies.room_runtime
+    implementation Dependencies.room_ktx
+    kapt Compilers.room_compiler
 
-    //socket for realtime
-    implementation('io.socket:socket.io-client:2.0.1')
+    implementation Dependencies.socket_io
 
-    //gson for serializing and deserializing
-    implementation "com.google.code.gson:gson:2.8.7"
+    implementation Dependencies.coroutine
+    implementation Dependencies.coroutine_android
+    implementation Dependencies.coroutine_adapter
 
-    //hilt for di
-    def hilt_version = "2.38.1"
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-    kapt "androidx.hilt:hilt-compiler:1.0.0"
+    implementation Compilers.hilt_android
+    kapt Compilers.hilt_android_compiler
+    kapt Compilers.hilt_android_lifecycle_compiler
 }

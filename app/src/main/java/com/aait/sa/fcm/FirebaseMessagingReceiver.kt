@@ -60,11 +60,11 @@ class FirebaseMessagingReceiver : FirebaseMessagingService() {
 
         CoroutineScope(Dispatchers.IO).launch {
             if (preferenceRepository.getLanguage().first() == ARABIC) {
-                title = notificationItem.messageAr ?: ""
-                message = notificationItem.titleAr ?: ""
+                title = notificationItem.titleAr ?: ""
+                message = notificationItem.messageAr ?: ""
             } else {
-                title = notificationItem.messageEn ?: ""
-                message = notificationItem.titleEn ?: ""
+                title = notificationItem.titleEn ?: ""
+                message = notificationItem.messageEn ?: ""
             }
 
             showNotification(

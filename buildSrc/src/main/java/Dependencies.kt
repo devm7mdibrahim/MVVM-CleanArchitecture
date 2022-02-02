@@ -6,11 +6,11 @@ object Dependencies {
 
 
     const val coroutine =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7"
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.version_kotlin_coroutines}"
     const val coroutine_android =
-        "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7"
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.version_kotlin_coroutines}"
     const val coroutine_adapter =
-        "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
+        "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:${Versions.version_retrofit_coroutines_adapter}"
     const val kotlin_coroutines_play_services =
         "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:${Versions.coroutines_play_services}"
 
@@ -28,10 +28,10 @@ object Dependencies {
     const val material_dialogs = "com.afollestad.material-dialogs:core:${Versions.material_dialogs}"
     const val material_dialogs_input =
         "com.afollestad.material-dialogs:input:${Versions.material_dialogs}"
-    const val room_runtime = "androidx.room:room-runtime:2.3.0"
+    const val room_runtime = "androidx.room:room-runtime:${Versions.room}"
     const val room_ktx = "androidx.room:room-ktx:${Versions.room}"
-    const val datastore = "androidx.datastore:datastore-core:1.0.0-beta01"
-    const val datastore_preference = "androidx.datastore:datastore-preferences:1.0.0-beta01"
+    const val datastore = "androidx.datastore:datastore-core:${Versions.datastore}"
+    const val datastore_preference = "androidx.datastore:datastore-preferences:${Versions.datastore}"
     const val play_core = "com.google.android.play:core:${Versions.play_core}"
     const val leak_canary = "com.squareup.leakcanary:leakcanary-android:${Versions.leak_canary}"
 
@@ -46,24 +46,26 @@ object Dependencies {
     const val firebase_iid = "com.google.firebase:firebase-iid:21.1.0"
 
 
-    const val lifecycle_runtime = "androidx.lifecycle:lifecycle-runtime:2.2.0-alpha03"
+    const val lifecycle_runtime = "androidx.lifecycle:lifecycle-runtime:${Versions.lifecycle_version}"
     const val lifecycle_coroutines =
-        "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0-alpha03"
-    const val retrofit = "com.squareup.retrofit2:retrofit:2.6.0"
-    const val moshi = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit2_version}"
-    const val moshi_kotlin = "com.squareup.moshi:moshi-kotlin:1.12.0"
+        "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle_version}"
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit2_version}"
+    const val moshi_converter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofit2_version}"
+    const val moshi_kotlin = "com.squareup.moshi:moshi-kotlin:${Versions.moshi}"
     const val retrofit_gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit2_version}"
     const val markdown_processor = "com.yydcdut:markdown-processor:${Versions.markdown_processor}"
     const val logging_interceptor =
-        "com.github.ihsanbal:LoggingInterceptor:3.0.0"
+        "com.github.ihsanbal:LoggingInterceptor:${Versions.logging_interceptor}"
 
+    const val socket_io = "io.socket:socket.io-client:2.0.1"
+    const val json_org = "org.json:json:20180813"
 
     const val rxjava2 = "io.reactivex.rxjava3:rxjava:${Versions.rxjava_version}"
     const val rxjavaAndroid2 = "io.reactivex.rxjava3:rxandroid:${Versions.rxjavaAndroid_version}"
     const val reactivestreams =
         "android.arch.lifecycle:reactivestreams:${Versions.reactivestreams_version}"
     const val rxjava2Adapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.rxjava2adapter_version}"
-    const val circleImage = "de.hdodenhof:circleimageview:3.1.0"
+    const val circleImage = "de.hdodenhof:circleimageview:${Versions.circle_image}"
 
     //maps
     const val android_service_map = "com.google.android.gms:play-services-maps:17.0.0"

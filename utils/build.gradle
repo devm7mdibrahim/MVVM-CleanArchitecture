@@ -32,17 +32,14 @@ android {
 
 dependencies {
 
-    def hilt_version = "2.38.1"
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
-    kapt "androidx.hilt:hilt-compiler:1.0.0"
+    implementation Compilers.hilt_android
+    kapt Compilers.hilt_android_compiler
+    kapt Compilers.hilt_android_lifecycle_compiler
 
     api 'androidx.core:core-ktx:1.7.0'
     api 'androidx.appcompat:appcompat:1.4.1'
     api 'com.google.android.material:material:1.5.0'
 
-    api 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
-    api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
     api 'androidx.legacy:legacy-support-v4:1.0.0'
 
     api 'com.jakewharton.rxbinding4:rxbinding:4.0.0'

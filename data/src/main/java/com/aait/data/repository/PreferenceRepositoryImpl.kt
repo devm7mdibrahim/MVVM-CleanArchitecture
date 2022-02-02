@@ -5,6 +5,7 @@ import com.aait.data.local.utils.PreferenceConstants
 import com.aait.data.remote.utils.NetworkConstants.Languages.ARABIC
 import com.aait.domain.repository.PreferenceRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 

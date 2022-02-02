@@ -27,7 +27,9 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
 
     override fun onCreateView() {
-        TODO("When click login button call ${login()} function")
+        binding.btnLogin.setOnClickListener {
+            login()
+        }
     }
 
     private fun login() {

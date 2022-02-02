@@ -1,6 +1,7 @@
 package com.aait.data.di
 
 import com.aait.data.BuildConfig
+import com.aait.data.di.StringsModule.RemoteBaseUrl
 import com.aait.data.remote.utils.NetworkConstants
 import com.aait.data.remote.utils.NetworkConstants.NETWORK_TIMEOUT
 import com.aait.domain.repository.PreferenceRepository
@@ -98,7 +99,7 @@ object NetworkModule {
     fun provideRetrofit(
         okHttpClient: OkHttpClient,
         moshi: Moshi,
-        @StringsModule.RemoteBaseUrl baseUrl: String
+        @RemoteBaseUrl baseUrl: String
     ): Retrofit {
         return Retrofit.Builder()
             .addConverterFactory(MoshiConverterFactory.create(moshi).asLenient())
