@@ -3,7 +3,6 @@ package com.aait.sa.ui.base.util
 import com.aait.domain.entities.BaseResponse
 import com.aait.domain.exceptions.NetworkExceptions
 import com.aait.domain.util.DataState
-import com.aait.sa.ui.base.getIsCommonException
 
 interface NetworkExtensionsActions {
     fun onLoad(showLoading: Boolean) {

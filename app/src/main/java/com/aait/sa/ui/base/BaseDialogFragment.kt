@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
+import com.aait.sa.ui.base.util.Inflate
 
 abstract class BaseDialogFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) :
     DialogFragment() {

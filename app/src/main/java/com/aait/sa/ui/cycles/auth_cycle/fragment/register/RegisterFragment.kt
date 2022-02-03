@@ -1,14 +1,13 @@
 package com.aait.sa.ui.cycles.auth_cycle.fragment.register
 
-import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.aait.domain.exceptions.ValidationException
 import com.aait.domain.util.DataState
 import com.aait.sa.R
+import com.aait.sa.databinding.FragmentRegisterBinding
 import com.aait.sa.ui.base.BaseFragment
 import com.aait.sa.ui.base.util.applyCommonSideEffects
-import com.aait.sa.databinding.FragmentRegisterBinding
 import com.aait.utils.common.onPrintLog
 import com.aait.utils.common.showToast
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,20 +19,16 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
     private var avatar: String? = null
     override val viewModel by viewModels<RegisterViewModel>()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun startObserver() {
+        super.startObserver()
         registerListener()
-    }
-
-    override fun afterCreateView() {
-        TODO("When click register button call ${register()} function")
     }
 
     private fun register() {
         lifecycleScope.launchWhenCreated {
             viewModel.registerResponse.emit(DataState.Idle)
             viewModel.register(
-                name= "Mohamed",
+                name = "Mohamed",
                 phone = "01024510687",
                 email = "mohamed@gmail.com",
                 password = "123456",

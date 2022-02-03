@@ -1,4 +1,4 @@
-package com.aait.sa.ui.base
+package com.aait.sa.ui.base.util
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

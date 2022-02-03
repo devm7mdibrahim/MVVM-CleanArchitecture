@@ -1,4 +1,4 @@
-package com.aait.sa.ui.base
+package com.aait.sa.ui.base.util
 
 import com.aait.domain.exceptions.NetworkExceptions
 import com.aait.sa.R

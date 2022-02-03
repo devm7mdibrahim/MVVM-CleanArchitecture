@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
+import com.aait.sa.ui.base.util.Inflate
 import com.aait.sa.ui.base.util.NetworkExtensionsActions
 import com.aait.sa.ui.cycles.auth_cycle.activity.AuthActivity
 import com.aait.utils.common.*
@@ -85,7 +86,7 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) 
             override fun onKey(v: View?, keyCode: Int, event: KeyEvent): Boolean {
                 if (event.action == KeyEvent.ACTION_DOWN) {
                     if (keyCode == KeyEvent.KEYCODE_BACK) {
-                        onBack()
+                        onBackPressed()
                         return true
                     }
                 }
@@ -94,7 +95,7 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) 
         })
     }
 
-    open fun onBack() {
+    open fun onBackPressed() {
         activity?.onBackPressed()
     }
 

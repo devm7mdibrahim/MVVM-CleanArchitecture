@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
+import com.aait.sa.ui.base.util.Inflate
 import com.aait.sa.ui.base.util.NetworkExtensionsActions
 import com.aait.sa.ui.cycles.auth_cycle.activity.AuthActivity
 import com.aait.utils.common.*
