@@ -10,7 +10,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     override val viewModel by viewModels<HomeViewModel>()
 
-    override fun onCreateView() {
+    override fun afterCreateView() {
         TODO("Not yet implemented")
     }
 }

@@ -2,6 +2,7 @@ package com.aait.sa.base
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +27,17 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) 
 
     private var _binding: VB? = null
     val binding get() = _binding!!
+    private var isInitialized = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        startObserver()
+    }
+
+    open fun startObserver() {
+        viewModel.onClearedObserver()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,20 +46,70 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) 
     ): View? {
         if (_binding == null) {
             _binding = inflate.invoke(inflater, container, false)
+            afterCreateView()
+        } else {
+            isInitialized = true
         }
-
-        onCreateView()
 
         return binding.root
     }
 
-    open fun onCreateView() {
+    open fun afterCreateView() {
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (!isInitialized) {
+            runAfterCreateView()
+        }
+
+        afterInitializedBinding()
+
+        backDefaultKey()
+    }
+
+    open fun runAfterCreateView() {
+
+    }
+
+    open fun afterInitializedBinding() {
+
+    }
+
+    private fun backDefaultKey() {
+        requireView().isFocusableInTouchMode = true
+        requireView().requestFocus()
+
+        requireView().setOnKeyListener(object : View.OnKeyListener {
+            override fun onKey(v: View?, keyCode: Int, event: KeyEvent): Boolean {
+                if (event.action == KeyEvent.ACTION_DOWN) {
+                    if (keyCode == KeyEvent.KEYCODE_BACK) {
+                        onBack()
+                        return true
+                    }
+                }
+                return false
+            }
+        })
+    }
+
+    open fun onBack() {
+        activity?.onBackPressed()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun resetField(target: Any, fieldName: String) {
+        val field = target.javaClass.getDeclaredField(fieldName)
+
+        with(field) {
+            isAccessible = true
+            set(target, null)
+        }
     }
 
     override fun onLoad(showLoading: Boolean) {
@@ -89,5 +151,4 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) 
                 startActivity(it)
             }
     }
-
 }

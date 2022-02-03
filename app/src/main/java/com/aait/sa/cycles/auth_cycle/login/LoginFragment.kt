@@ -27,7 +27,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         loginListener()
     }
 
-    override fun onCreateView() {
+    override fun afterCreateView() {
         binding.btnLogin.setOnClickListener {
             login()
         }

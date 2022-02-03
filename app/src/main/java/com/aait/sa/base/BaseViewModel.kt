@@ -5,6 +5,11 @@ import com.aait.domain.repository.PreferenceRepository
 import javax.inject.Inject
 
 open class BaseViewModel : ViewModel() {
+
     @Inject
     lateinit var preferenceRepository: PreferenceRepository
+
+    open fun onClearedObserver() {
+        super.onCleared()
+    }
 }

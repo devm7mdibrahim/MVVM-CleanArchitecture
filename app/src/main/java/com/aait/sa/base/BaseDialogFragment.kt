@@ -1,7 +1,5 @@
 package com.aait.sa.base
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +11,8 @@ abstract class BaseDialogFragment<VB : ViewBinding>(private val inflate: Inflate
     DialogFragment() {
 
     private var _binding: VB? = null
-    private val binding get() = _binding!!
+    val binding get() = _binding!!
+    private var isInitialized = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,9 +21,43 @@ abstract class BaseDialogFragment<VB : ViewBinding>(private val inflate: Inflate
     ): View? {
         if (_binding == null) {
             _binding = inflate.invoke(inflater, container, false)
+            afterCreateView()
+        } else {
+            isInitialized = true
         }
-        requireDialog().window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
         return binding.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        startObserver()
+    }
+
+    open fun startObserver() {
+
+    }
+
+    open fun afterCreateView() {
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (!isInitialized) {
+            runAfterCreateView()
+        }
+
+        afterInitializedBinding()
+    }
+
+    open fun runAfterCreateView() {
+
+    }
+
+    open fun afterInitializedBinding() {
+
     }
 
     override fun onDestroyView() {

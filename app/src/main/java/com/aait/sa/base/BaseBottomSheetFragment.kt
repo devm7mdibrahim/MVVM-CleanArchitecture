@@ -1,8 +1,6 @@
 package com.aait.sa.base
 
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -28,6 +26,7 @@ abstract class BaseBottomSheetFragment<VB : ViewBinding>(private val inflate: In
 
     private var _binding: VB? = null
     val binding get() = _binding!!
+    private var isInitialized = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,9 +35,33 @@ abstract class BaseBottomSheetFragment<VB : ViewBinding>(private val inflate: In
     ): View? {
         if (_binding == null) {
             _binding = inflate.invoke(inflater, container, false)
+            afterCreateView()
+        } else {
+            isInitialized = true
         }
-        requireDialog().window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
         return binding.root
+    }
+
+    open fun afterCreateView() {
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (!isInitialized) {
+            runAfterCreateView()
+        }
+
+        afterInitializedBinding()
+    }
+
+    open fun runAfterCreateView() {
+
+    }
+
+    open fun afterInitializedBinding() {
+
     }
 
     override fun onDestroyView() {

@@ -10,7 +10,7 @@ class NotificationsFragment : BaseFragment<FragmentNotificationsBinding>(Fragmen
 
     override val viewModel by viewModels<NotificationsViewModel>()
 
-    override fun onCreateView() {
+    override fun afterCreateView() {
         TODO("Not yet implemented")
     }
 }

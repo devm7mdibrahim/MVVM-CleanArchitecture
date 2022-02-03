@@ -3,17 +3,19 @@ package com.aait.sa.cycles.home_cycle.home_container
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.aait.sa.R
 import com.aait.sa.base.BaseFragment
 import com.aait.sa.databinding.FragmentHomeContainerBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class HomeContainerFragment : BaseFragment<FragmentHomeContainerBinding>(FragmentHomeContainerBinding::inflate) {
+class HomeContainerFragment :
+    BaseFragment<FragmentHomeContainerBinding>(FragmentHomeContainerBinding::inflate) {
 
     override val viewModel by viewModels<HomeContainerViewModel>()
 
-    override fun onCreateView() {
+    override fun afterCreateView() {
         TODO("Not yet implemented")
     }
 
