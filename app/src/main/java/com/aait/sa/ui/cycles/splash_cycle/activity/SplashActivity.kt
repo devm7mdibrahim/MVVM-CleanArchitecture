@@ -3,6 +3,8 @@ package com.aait.sa.ui.cycles.splash_cycle.activity
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
 import androidx.lifecycle.lifecycleScope
 import com.aait.sa.R
 import com.aait.sa.ui.base.BaseActivity
@@ -19,19 +21,23 @@ class SplashActivity : BaseActivity() {
     @SuppressLint("MissingSuperCall")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_splash)
 
-        lifecycleScope.launchWhenCreated {
-            delay(2000)
-
-            val token = preferenceRepository.getToken().first()
-
-            if (token.isNotEmpty()) {
-                openHomeActivity()
-            } else {
-                openAuthActivity()
-            }
-        }
+//        lifecycleScope.launchWhenCreated {
+//            delay(2000)
+//
+//            val token = preferenceRepository.getToken().first()
+//
+//            if (token.isNotEmpty()) {
+//                openHomeActivity()
+//            } else {
+//                openAuthActivity()
+//            }
+//        }
     }
 
     private fun openHomeActivity() {

@@ -56,6 +56,8 @@ dependencies {
     implementation 'com.akexorcist:localization:1.2.10'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+    //GIF_IMAGE_VIEW
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
 
     implementation Compilers.hilt_android
     kapt Compilers.hilt_android_compiler

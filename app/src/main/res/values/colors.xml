@@ -1,3 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <color name="purple_200">#FAEA27</color>
+    <color name="purple_500">#99C056</color>
+    <color name="purple_700">#FFD903</color>
+    <color name="teal_200">#FFD903</color>
+    <color name="teal_700">#99C056</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Main theme colors -->
+    <color name="colorPrimary">#FAEA27</color>
+    <color name="colorPrimaryDark">#0B3434</color>
+    <color name="colorAccent">#99C056</color>
+    <color name="green_8DA34E">#8DA34E</color>
+
+    <color name="colorPrimary30">#77FAEA27</color>
+
+    <!-- Secondary theme colors -->
+    <color name="tealDark">#2C52A2</color>
+    <color name="tealLight">#9FDAF7</color>
+    <color name="link_blue">#FFD903</color>
+    <color name="app_background_color">#f2f2f2</color>
+
+    <!-- other -->
+    <color name="red">#e22b2b</color>
+    <color name="red2">#fc8b8d</color>
+    <color name="grey">#CDD4D9</color>
+    <color name="grey1">#f2f2f2</color>
+    <color name="grey2">#c4c4c4</color>
+    <color name="grey3">#a8a8a8</color>
+    <color name="grey4">#7d7d7d</color>
+    <color name="grey5">#5c5c5c</color>
+
+    <color name="default_grey">#686868</color>
+    <color name="default_background_color">#EEEEEE</color>
+    <color name="green_4FD477">#4FD477</color>
+    <color name="geray_E2DDD0">#E2DDD0</color>
+    <color name="black">#000</color>
+    <color name="txt_black_1F2327">#1F2327</color>
+    <color name="txt_gray_8D8D8D">#8D8D8D</color>
+    <color name="gold_FFFAE6">#33FFD903</color>
+    <color name="txt_black_575757">#575757</color>
+    <color name="gray_EFEFEF">#EFEFEF</color>
+    <color name="gray_EFEFEF10">#33EFEFEF</color>
+    <color name="red_CB0529">#CB0529</color>
+    <color name="gray_EEEEEE">#EEEEEE</color>
+    <color name="txt_gray_6B6B6B">#6B6B6B</color>
+    <color name="gray_DFE0E0">#DFE0E0</color>
+    <color name="gold_FFCE00">#FFCE00</color>
+    <color name="gery_FBFAF8">#FBFAF8</color>
+    <color name="gray_FBFAF8">#FBFAF8</color>
+    <color name="BA94C1">#BA94C1</color>
+    <color name="gray_CDD4D9">#CDD4D9</color>
+    <color name="white_t">#9FFFFFFF</color>
+    <color name="txt_black_393939">#393939</color>
+    <color name="red_E30613">#E30613</color>
+    <color name="red_FC0000">#FC0000</color>
+    <color name="gray_F6F6F6">#F6F6F6</color>
+    <color name="gray_F2F2F2">#F2F2F2</color>
+    <color name="gray_666767">#666767</color>
+    <color name="gray_707070">#707070</color>
+    <color name="blue_08324D">#08324D</color>
+    <color name="red_D31E37">#D31E37</color>
+    <color name="txt_gray_464646">#464646</color>
+    <color name="txt_gray_989898">#989898</color>
+    <color name="green_82A94C">#82A94C</color>
+    <color name="gray_F8F8F8">#F8F8F8</color>
+    <color name="red_FF0000">#FF0000</color>
+
 </resources>

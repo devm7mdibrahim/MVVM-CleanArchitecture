@@ -1,0 +1,41 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <style name="SelectedTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="NotSelectedTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/grey5</item>
+    </style>
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#DBDBDB</item>
+        <item name="colorControlActivated">#FFC107</item>
+    </style>
+
+    <style name="btn_parent">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_46sdp</item>
+        <item name="android:textSize">@dimen/_11sdp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:paddingTop">@dimen/_3sdp</item>
+        <item name="android:paddingBottom">@dimen/_3sdp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingStart">@dimen/_16sdp</item>
+        <item name="android:paddingEnd">@dimen/_16sdp</item>
+        <item name="android:layout_marginTop">@dimen/_8sdp</item>
+        <item name="android:layout_marginStart">@dimen/_8sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_8sdp</item>
+        <item name="backgroundTint">@null</item>
+    </style>
+
+</resources>
