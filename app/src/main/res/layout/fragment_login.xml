@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".cycles.auth_cycle.login.LoginFragment">
+    tools:context=".ui.cycles.auth_cycle.fragment.login.LoginFragment">
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_phone"

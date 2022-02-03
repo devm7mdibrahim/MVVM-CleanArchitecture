@@ -6,12 +6,12 @@
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.aait.sa.cycles.auth_cycle.login.LoginFragment"
+        android:name="com.aait.sa.ui.cycles.auth_cycle.fragment.login.LoginFragment"
         android:label="fragment_login" />
 
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.aait.sa.cycles.auth_cycle.register.RegisterFragment"
+        android:name="com.aait.sa.ui.cycles.auth_cycle.fragment.register.RegisterFragment"
         android:label="fragment_register">
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
