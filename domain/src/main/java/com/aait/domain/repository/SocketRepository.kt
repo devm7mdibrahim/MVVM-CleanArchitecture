@@ -11,8 +11,8 @@ interface SocketRepository {
     suspend fun sendMessage(key: String, jsonObject: JSONObject)
     suspend fun updateLocation(key: String, jsonObject: JSONObject)
 
-    suspend fun onMessageReceived(key: String): Flow<JSONObject>
-    suspend fun onLocationUpdated(key: String): Flow<JSONObject>
+    fun onMessageReceived(key: String, resultChanel: (JSONObject) -> Unit)
+    fun onLocationUpdated(key: String, resultChanel: (JSONObject) -> Unit)
 
     fun connectSocket(): Flow<Boolean>
     fun disconnectSocket()

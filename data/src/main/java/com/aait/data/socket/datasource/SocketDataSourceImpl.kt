@@ -3,10 +3,8 @@ package com.aait.coredata.socket.datasource
 import androidx.lifecycle.MutableLiveData
 import com.aait.data.datasource.SocketDataSource
 import io.socket.client.Socket
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.launch
 import org.json.JSONObject
 import javax.inject.Inject
 
@@ -31,15 +29,14 @@ class SocketDataSourceImpl @Inject constructor(
         }
     }
 
-    override suspend fun openChannel(
+    override fun openChannel(
         channel: String,
         socketReConnect: Int,
-    ): Flow<JSONObject> = flow {
-        socket.off()
+        resultChanel: (JSONObject) -> Unit
+    ) {
+//        socket.off()
         socket.on(channel) {
-            GlobalScope.launch {
-                emit(JSONObject(it[0].toString()))
-            }
+            resultChanel(JSONObject(it[0].toString()))
         }
     }
 

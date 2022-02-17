@@ -31,12 +31,12 @@ class SocketRepositoryImpl @Inject constructor(private val socketDataSource: Soc
         socketDataSource.setEmit(key, jsonObject, 1)
     }
 
-    override suspend fun onMessageReceived(key: String): Flow<JSONObject> = flow {
-        emitAll(socketDataSource.openChannel(key, 1))
+    override fun onMessageReceived(key: String, resultChanel: (JSONObject) -> Unit) {
+        socketDataSource.openChannel(key, 1, resultChanel)
     }
 
-    override suspend fun onLocationUpdated(key: String): Flow<JSONObject> = flow {
-        emitAll(socketDataSource.openChannel(key, 1))
+    override fun onLocationUpdated(key: String, resultChanel: (JSONObject) -> Unit) {
+        socketDataSource.openChannel(key, 1, resultChanel)
     }
 
     override fun connectSocket(): Flow<Boolean> = flow {

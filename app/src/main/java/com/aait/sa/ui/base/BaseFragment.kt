@@ -13,6 +13,7 @@ import com.aait.sa.ui.base.util.Inflate
 import com.aait.sa.ui.base.util.NetworkExtensionsActions
 import com.aait.sa.ui.cycles.auth_cycle.activity.AuthActivity
 import com.aait.utils.common.*
+import com.aait.utils.common.Utils.hiddenKeyBord
 import javax.inject.Inject
 
 abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) : Fragment(),
@@ -151,5 +152,13 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) 
             .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK).also {
                 startActivity(it)
             }
+    }
+
+    open fun setOnClick(view: View) {
+        view.setOnClickListener { onViewClicked(view) }
+    }
+
+    open fun onViewClicked(view: View) {
+        hiddenKeyBord(view, requireActivity())
     }
 }

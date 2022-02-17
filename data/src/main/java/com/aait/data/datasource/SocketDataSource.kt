@@ -7,7 +7,7 @@ interface SocketDataSource {
 
     fun connectToSocket(): Flow<Boolean>
     fun disconnectSocket()
-    suspend fun openChannel(channel: String, socketReConnect: Int): Flow<JSONObject>
+    fun openChannel(channel: String, socketReConnect: Int,resultChanel: (JSONObject) -> Unit)
     fun setEmit(emitType: String, jsonObject: JSONObject?, socketReConnect: Int)
     fun onConnectSocket()
     fun onDisconnectSocket()
