@@ -5,5 +5,5 @@ object Build {
     const val junit5 = "de.mannodermaus.gradle.plugins:android-junit5:1.3.2.0"
     const val navigation = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.nav_version}"
     const val crashlytics_gradle = "com.google.firebase:firebase-crashlytics-gradle:${Versions.crashlytics_gradle}"
-    const val hilt_gradle = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hiltVersion2}"
+    const val hilt_gradle = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hiltVersion}"
 }

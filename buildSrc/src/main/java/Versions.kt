@@ -1,5 +1,5 @@
 object Versions {
-    const val gradle = "4.2.1"
+    const val gradle = "7.2.0-beta03"
     const val compilesdk = 30
     const val buildTool = 30
     const val buildToolsVersion = "30.0.3"
@@ -12,7 +12,7 @@ object Versions {
     const val ktx = "1.2.0"
     const val multidex = "2.0.1"
     const val dagger = "2.25.4"
-    const val nav_components = "2.3.3"
+    const val nav_components = "2.4.1"
     const val material_dialogs = "3.2.1"
     const val room = "2.3.0"
     const val datastore = "1.0.0-beta01"
@@ -47,9 +47,8 @@ object Versions {
     const val junit_4_version = "4.12"
     const val fragment_version = "1.2.0"
     const val androidx_test_ext = "1.1.1"
-    const val crashlytics_gradle = "2.1.0"
-    const val hiltVersion = "2.28-alpha"
-    const val hiltVersion2 = "2.38.1"
+    const val crashlytics_gradle = "2.7.1"
+    const val hiltVersion = "2.38.1"
     const val hiltAndroidXVersionCompiler = "1.0.0"
     const val logging_interceptor = "3.0.0"
     const val rxjava_version = "3.0.0"
