@@ -2,18 +2,16 @@ package com.aait.sa.ui.base
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
-import com.aait.sa.ui.base.util.Inflate
-import com.aait.sa.ui.base.util.NetworkExtensionsActions
 import com.aait.sa.ui.cycles.auth_cycle.activity.AuthActivity
+import com.aait.sa.ui.utils.Inflate
+import com.aait.sa.ui.utils.NetworkExtensionsActions
 import com.aait.utils.common.*
-import com.aait.utils.common.Utils.hiddenKeyBord
 import javax.inject.Inject
 
 abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) : Fragment(),
@@ -29,16 +27,14 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) 
 
     private var _binding: VB? = null
     val binding get() = _binding!!
-    private var isInitialized = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         startObserver()
     }
 
     open fun startObserver() {
-        viewModel.onClearedObserver()
+
     }
 
     override fun onCreateView(
@@ -48,70 +44,23 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) 
     ): View? {
         if (_binding == null) {
             _binding = inflate.invoke(inflater, container, false)
-            afterCreateView()
-        } else {
-            isInitialized = true
+            onCreateView()
         }
+        afterCreateView()
+        handleClicks()
 
         return binding.root
     }
 
-    open fun afterCreateView() {
+    open fun onCreateView() {}
 
-    }
+    open fun afterCreateView() {}
 
-    override fun onStart() {
-        super.onStart()
-        if (!isInitialized) {
-            runAfterCreateView()
-        }
-
-        afterInitializedBinding()
-
-        backDefaultKey()
-    }
-
-    open fun runAfterCreateView() {
-
-    }
-
-    open fun afterInitializedBinding() {
-
-    }
-
-    private fun backDefaultKey() {
-        requireView().isFocusableInTouchMode = true
-        requireView().requestFocus()
-
-        requireView().setOnKeyListener(object : View.OnKeyListener {
-            override fun onKey(v: View?, keyCode: Int, event: KeyEvent): Boolean {
-                if (event.action == KeyEvent.ACTION_DOWN) {
-                    if (keyCode == KeyEvent.KEYCODE_BACK) {
-                        onBackPressed()
-                        return true
-                    }
-                }
-                return false
-            }
-        })
-    }
-
-    open fun onBackPressed() {
-        activity?.onBackPressed()
-    }
+    open fun handleClicks() {}
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-    }
-
-    private fun resetField(target: Any, fieldName: String) {
-        val field = target.javaClass.getDeclaredField(fieldName)
-
-        with(field) {
-            isAccessible = true
-            set(target, null)
-        }
     }
 
     override fun onLoad(showLoading: Boolean) {
@@ -152,13 +101,5 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) 
             .setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK).also {
                 startActivity(it)
             }
-    }
-
-    open fun setOnClick(view: View) {
-        view.setOnClickListener { onViewClicked(view) }
-    }
-
-    open fun onViewClicked(view: View) {
-        hiddenKeyBord(view, requireActivity())
     }
 }

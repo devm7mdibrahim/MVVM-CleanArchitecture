@@ -8,4 +8,26 @@
     <string name="text_are_you_sure_logout">Are you sure you want to logout?</string>
     <string name="text_are_must_login_to_continue">You must login to continue</string>
     <string name="block_massage">Your account has been blocked or deleted. In the event of an error, please contact the application administration.</string>
+
+    <string name="error_timeout">Timeout, please try again</string>
+    <string name="error_unknown">Something went wrong, please try again</string>
+    <string name="error_server">Something went wrong, please try again later</string>
+    <string name="error_not_found">Something went wrong, please try again later</string>
+    <string name="error_connection">No internet connection</string>
+    <string name="error_unauthorized">UnAuthorized user</string>
+
+    <string name="error_invalid_phone">Invalid phone number</string>
+    <string name="error_invalid_name">Invalid user name</string>
+    <string name="error_invalid_password">Invalid password</string>
+    <string name="error_invalid_confirmation_password">Invalid confirmation password</string>
+    <string name="error_invalid_email">Invalid email address</string>
+    <string name="error_invalid_device_id">Invalid device id</string>
+    <string name="error_invalid_verification_code">Please enter the verification code before confirm</string>
+
+    <string name="big_text">This text is an example of a text that can be replaced in the same space,
+        this text was generated from the Arabic text generator,
+        this text is an example of text that can be replaced in the same space,
+        this text was generated from the Arabic text generator,
+        this text is an example of a text that can be replaced To replace in the same space,
+        it has been taken over</string>
 </resources>

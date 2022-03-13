@@ -20,6 +20,18 @@
         <entry key="..\:/Users/USER/StudioProjects/BaseModules/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.146" />
         <entry key="..\:/Users/USER/StudioProjects/BaseModules/utils/src/main/res/drawable/bg_top_rounded_white.xml" value="0.146" />
         <entry key="..\:/Users/USER/StudioProjects/BaseModules/utils/src/main/res/layout/progress.xml" value="0.2" />
+        <entry key="..\:/Users/USER/StudioProjects/base-modularized/app/src/main/res/drawable/bg_receiver_message.xml" value="0.1675" />
+        <entry key="..\:/Users/USER/StudioProjects/base-modularized/app/src/main/res/drawable/ic_send.xml" value="0.1675" />
+        <entry key="..\:/Users/USER/StudioProjects/base-modularized/app/src/main/res/layout/activity_auth.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/USER/StudioProjects/base-modularized/app/src/main/res/layout/activity_splash.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/USER/StudioProjects/base-modularized/app/src/main/res/layout/base_back.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/USER/StudioProjects/base-modularized/app/src/main/res/layout/fragment_chat.xml" value="0.267840593141798" />
+        <entry key="..\:/Users/USER/StudioProjects/base-modularized/app/src/main/res/layout/fragment_splash.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/USER/StudioProjects/base-modularized/app/src/main/res/layout/item_conversation.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/USER/StudioProjects/base-modularized/app/src/main/res/layout/item_receiver_message.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/USER/StudioProjects/base-modularized/app/src/main/res/layout/item_sender_message.xml" value="0.25025641025641027" />
+        <entry key="..\:/Users/USER/StudioProjects/base-modularized/utils/src/main/res/drawable/ic_back.xml" value="0.1675" />
+        <entry key="..\:/Users/USER/StudioProjects/base-modularized/utils/src/main/res/layout/progress.xml" value="0.25416666666666665" />
         <entry key="app/src/main/res/layout/activity_auth.xml" value="0.26614583333333336" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.26614583333333336" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.25462962962962965" />

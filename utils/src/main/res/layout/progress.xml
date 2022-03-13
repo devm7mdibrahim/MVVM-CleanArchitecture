@@ -6,5 +6,5 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:orientation="horizontal"
-    app:mk_color="@color/colorPrimary"
-    app:mk_type="FivePulse" />
+    app:mk_color="@color/colorAccent"
+    app:mk_type="Whirlpool" />

@@ -8,4 +8,36 @@
         android:id="@+id/homeContainerFragment"
         android:name="com.aait.sa.ui.cycles.home_cycle.fragment.home_container.HomeContainerFragment"
         android:label="fragment_home_container" />
+
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.aait.sa.ui.cycles.chatting_cycle.chat.ChatFragment"
+        android:label="fragment_chat">
+        <argument
+            android:name="room_id"
+            app:argType="integer" />
+        <argument
+            android:name="user_name"
+            app:argType="string" />
+        <argument
+            android:name="uuid"
+            app:argType="string" />
+        <argument
+            android:name="other_id"
+            app:argType="integer" />
+    </fragment>
+
+    <action
+        android:id="@+id/action_global_chatFragment"
+        app:destination="@id/chatFragment" />
+
+    <fragment
+        android:id="@+id/conversationsFragment"
+        android:name="com.aait.sa.ui.cycles.chatting_cycle.conversations.ConversationsFragment"
+        android:label="ConversationsFragment" />
+    <action
+        android:id="@+id/action_global_conversationsFragment"
+        app:destination="@id/conversationsFragment" />
+
+
 </navigation>

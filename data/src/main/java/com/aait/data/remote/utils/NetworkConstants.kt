@@ -41,5 +41,8 @@ object NetworkConstants {
     object EndPoints {
         const val LOGIN = "login"
         const val REGISTER = "register"
+        const val ROOMS = "rooms"
+        const val CONVERSATION = "conversation"
+        const val ROOM_ID = "room_id"
     }
 }

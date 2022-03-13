@@ -21,7 +21,7 @@ object Versions {
     const val material_design = "1.1.0"
     const val play_core = "1.7.1"
     const val play_services = "4.3.4"
-    const val nav_version = "2.3.3"
+    const val nav_version = "2.4.1"
     const val leak_canary = "2.0-alpha-3"
     const val swipe_refresh_layout = "1.1.0-alpha03"
     const val circular_image_view = "3.1.0"

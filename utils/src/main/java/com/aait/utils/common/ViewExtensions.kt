@@ -3,6 +3,7 @@ package com.aait.utils.common
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.graphics.drawable.ColorDrawable
+import android.view.KeyEvent
 import android.view.View
 import android.widget.EditText
 import androidx.core.content.ContextCompat
@@ -114,6 +115,30 @@ fun EditText.enableContentInteraction() {
 
 fun EditText.fetchText(): String {
     return this.text.toString().trim()
+}
+
+fun View.onBackPressed(backPressed: () -> Unit) {
+    isFocusableInTouchMode = true
+    requestFocus()
+
+    setOnKeyListener(object : View.OnKeyListener {
+        override fun onKey(v: View?, keyCode: Int, event: KeyEvent): Boolean {
+            if (event.action == KeyEvent.ACTION_DOWN) {
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    backPressed.invoke()
+                    return true
+                }
+            }
+            return false
+        }
+    })
+}
+
+fun View.onClick(clickListener: () -> Unit) {
+    setOnClickListener {
+        hideKeyboard()
+        clickListener.invoke()
+    }
 }
 
 //fun Context.setSelectedStyle(view: TextView) {

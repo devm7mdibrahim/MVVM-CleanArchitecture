@@ -5,11 +5,5 @@
     android:layout_height="match_parent"
     tools:context=".ui.cycles.home_cycle.activity.HomeActivity">
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gif_splash"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="fitXY"
-        android:src="@drawable/splash" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

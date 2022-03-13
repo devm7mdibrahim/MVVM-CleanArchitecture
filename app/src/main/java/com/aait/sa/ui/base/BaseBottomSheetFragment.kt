@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
-import com.aait.sa.ui.base.util.Inflate
-import com.aait.sa.ui.base.util.NetworkExtensionsActions
 import com.aait.sa.ui.cycles.auth_cycle.activity.AuthActivity
+import com.aait.sa.ui.utils.Inflate
+import com.aait.sa.ui.utils.NetworkExtensionsActions
 import com.aait.utils.common.*
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import javax.inject.Inject
@@ -27,7 +27,6 @@ abstract class BaseBottomSheetFragment<VB : ViewBinding>(private val inflate: In
 
     private var _binding: VB? = null
     val binding get() = _binding!!
-    private var isInitialized = false
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,32 +35,18 @@ abstract class BaseBottomSheetFragment<VB : ViewBinding>(private val inflate: In
     ): View? {
         if (_binding == null) {
             _binding = inflate.invoke(inflater, container, false)
-            afterCreateView()
-        } else {
-            isInitialized = true
+            onCreateView()
         }
+        afterCreateView()
 
         return binding.root
     }
 
+    open fun onCreateView() {
+
+    }
+
     open fun afterCreateView() {
-
-    }
-
-    override fun onStart() {
-        super.onStart()
-        if (!isInitialized) {
-            runAfterCreateView()
-        }
-
-        afterInitializedBinding()
-    }
-
-    open fun runAfterCreateView() {
-
-    }
-
-    open fun afterInitializedBinding() {
 
     }
 

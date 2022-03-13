@@ -1,10 +1,13 @@
-package com.aait.coredata.socket.datasource
+package com.aait.data.socket.datasource
 
-import androidx.lifecycle.MutableLiveData
 import com.aait.data.datasource.SocketDataSource
 import io.socket.client.Socket
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.launch
 import org.json.JSONObject
 import javax.inject.Inject
 
@@ -12,14 +15,26 @@ class SocketDataSourceImpl @Inject constructor(
     private val socket: Socket
 ) : SocketDataSource {
 
-    private val connectLiveData = MutableLiveData<Boolean>()
+    private val connectFlow = MutableStateFlow(false)
+    private val messagesFlow = MutableStateFlow(emptyList<String>())
 
-    override fun connectToSocket(): Flow<Boolean> = flow {
+    override fun connectSocket(): Flow<Boolean> = flow {
         if (!socket.connected()) {
             socket.connect()
-            onConnectSocket()
+
+            socket.on(Socket.EVENT_CONNECT) {
+                GlobalScope.launch { connectFlow.emit(true) }
+                socket.off(Socket.EVENT_CONNECT)
+            }
+
+            socket.on(Socket.EVENT_CONNECT_ERROR) { connectSocket() }
+
         } else {
-            emit(true)
+            GlobalScope.launch { connectFlow.emit(true) }
+        }
+
+        connectFlow.collect {
+            emit(it)
         }
     }
 
@@ -27,59 +42,41 @@ class SocketDataSourceImpl @Inject constructor(
         if (socket.connected()) {
             socket.disconnect()
         }
+
+        GlobalScope.launch { messagesFlow.emit(emptyList()) }
     }
 
     override fun openChannel(
-        channel: String,
-        socketReConnect: Int,
-        resultChanel: (JSONObject) -> Unit
-    ) {
-//        socket.off()
+        channel: String
+    ): Flow<List<String>> = flow {
+        socket.off()
         socket.on(channel) {
-            resultChanel(JSONObject(it[0].toString()))
+            GlobalScope.launch {
+                it.map { it.toString() }.let { messages ->
+                    messagesFlow.emit(messages)
+                }
+            }
+        }
+
+        messagesFlow.collect {
+            emit(it)
         }
     }
 
     override fun setEmit(
         emitType: String,
-        jsonObject: JSONObject?,
-        socketReConnect: Int
+        jsonObject: JSONObject?
     ) {
         if (socket.connected()) {
             socket.emit(emitType, jsonObject)
         } else {
-            connectToSocket()
-            if (socketReConnect <= 3) {
-                setEmit(emitType, jsonObject, socketReConnect + 1)
+            GlobalScope.launch {
+                connectSocket().collect {
+                    if (it) {
+                        socket.emit(emitType, jsonObject)
+                    }
+                }
             }
         }
-    }
-
-    override fun onConnectSocket() {
-        socket.on(Socket.EVENT_CONNECT) {
-            connectLiveData.postValue(true)
-            socket.off(Socket.EVENT_CONNECT)
-        }
-
-//        socket.on(Socket.EVENT_CONNECT_TIMEOUT) {
-//            onReconnectSocket()
-//        }
-//        socket.on(Socket.EVENT_RECONNECT_FAILED) {
-//            onReconnectSocket()
-//        }
-//        socket.on(Socket.EVENT_ERROR) {
-//            onReconnectSocket()
-//        }
-    }
-
-    override fun onDisconnectSocket() {
-        connectLiveData.postValue(true)
-        socket.disconnect()
-    }
-
-    override fun onReconnectSocket() {
-//        socket.on(Socket.EVENT_RECONNECT) {
-//            connectLiveData.postValue(true)
-//        }
     }
 }

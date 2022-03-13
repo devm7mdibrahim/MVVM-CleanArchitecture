@@ -1,6 +1,7 @@
 package com.aait.data.di
 
 import com.aait.data.remote.endpoints.AuthEndPoints
+import com.aait.data.remote.endpoints.ChatEndPoints
 import com.aait.data.remote.endpoints.HomeEndPoints
 import dagger.Module
 import dagger.Provides
@@ -22,4 +23,9 @@ object EndPointsModule {
     @Singleton
     fun provideHomeEndPoints(retrofit: Retrofit): HomeEndPoints =
         retrofit.create(HomeEndPoints::class.java)
+
+    @Provides
+    @Singleton
+    fun provideChatEndPoints(retrofit: Retrofit): ChatEndPoints =
+        retrofit.create(ChatEndPoints::class.java)
 }

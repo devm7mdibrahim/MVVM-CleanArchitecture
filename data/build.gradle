@@ -65,7 +65,7 @@ dependencies {
     implementation Dependencies.room_ktx
     kapt Compilers.room_compiler
 
-    implementation Dependencies.socket_io
+    api Dependencies.socket_io
 
     implementation Dependencies.coroutine
     implementation Dependencies.coroutine_android

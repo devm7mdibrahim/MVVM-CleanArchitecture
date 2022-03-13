@@ -1,8 +1,7 @@
 package com.aait.data.di
 
 import com.aait.data.datasource.SocketDataSource
-import com.aait.coredata.socket.datasource.SocketDataSourceImpl
-import com.aait.data.di.StringsModule
+import com.aait.data.socket.datasource.SocketDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

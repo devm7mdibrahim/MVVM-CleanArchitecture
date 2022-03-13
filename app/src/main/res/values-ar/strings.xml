@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Base Modules</string>
+    <string name="there_are_no_chats">لا توجد محادثات</string>
+    <string name="text_ok">حسنا</string>
+    <string name="text_cancel">إلغاء</string>
+    <string name="sar">ر.س</string>
+    <string name="no_internet_connection">لا يوجد اتصال بالانترنت</string>
+    <string name="text_alert">تنبيه</string>
+    <string name="text_are_you_sure_logout">هل أنت متأكد من تسجيل الخروج؟</string>
+    <string name="text_are_must_login_to_continue">يجب تسجيل الدخول للاستمرار</string>
+    <string name="block_massage">تم تعطيل أو حذف حسابك، برجاء التواصل مع الإدارة</string>
+
+    <string name="error_timeout">إنتهاء الوقت، برجاء المحاولة مجددا</string>
+    <string name="error_unknown">حدث خطأ ما، رجاء المحاولة لاحقا</string>
+    <string name="error_server">حدث خطأ ما، رجاء المحاولة لاحقا</string>
+    <string name="error_not_found">حدث خطأ ما، رجاء المحاولة لاحقا</string>
+    <string name="error_connection">لا يوجد اتصال بالانترنت</string>
+    <string name="error_unauthorized">مستخدم غير مصرح له</string>
+
+    <string name="error_invalid_phone">برجاء إدخال رقم جوال صحيح</string>
+    <string name="error_invalid_name">برجاء إدخال اسم مستخدم صحيح</string>
+    <string name="error_invalid_password">برجاء إدخال كلمة مرور صحيحة</string>
+    <string name="error_invalid_confirmation_password">برجاء إدخال كلمة تأكيد مرور صحيحة</string>
+    <string name="error_invalid_email">برجاء إدخال بريد إلكتروني صحيح</string>
+    <string name="error_invalid_device_id">عنوان الجهاز غير صالح</string>
+    <string name="error_invalid_verification_code">الرجاء إدخال كود التفعيل قبل التأكيد</string>
+
+    <string name="big_text">هذا النص هو مثال لنص يمكن أن يستبدل في نفس  المساحة،
+        لقد تم توليد هذا النص من مولد النص العربى،
+        هذا النص هو مثال لنص يمكن أن يستبدل في نفس  المساحة،
+        لقد تم توليد هذاالنص من مولد النص العربى،
+        هذا النص هو مثال لنص يمكن أن يستبدل في نفس  المساحة</string>
+</resources>
