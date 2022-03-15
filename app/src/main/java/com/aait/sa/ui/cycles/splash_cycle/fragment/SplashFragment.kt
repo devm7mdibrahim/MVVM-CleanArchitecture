@@ -3,7 +3,6 @@ package com.aait.sa.ui.cycles.splash_cycle.fragment
 import android.content.Intent
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.aait.domain.repository.PreferenceRepository
 import com.aait.sa.databinding.FragmentSplashBinding
 import com.aait.sa.ui.base.BaseFragment
 import com.aait.sa.ui.base.BaseViewModel
@@ -12,15 +11,11 @@ import com.aait.sa.ui.cycles.home_cycle.activity.HomeActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding::inflate) {
 
     override val viewModel by viewModels<BaseViewModel>()
-
-    @Inject
-    lateinit var preferenceRepository: PreferenceRepository
 
     override fun onResume() {
         super.onResume()
@@ -28,12 +23,14 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding
         lifecycleScope.launchWhenResumed {
             delay(2000)
 
-            val token = preferenceRepository.getToken().first()
+            viewModel.preferenceRepository.getToken().first { token ->
+                if (token.isNotEmpty()) {
+                    openHomeActivity()
+                } else {
+                    openAuthActivity()
+                }
 
-            if (token.isNotEmpty()) {
-                openHomeActivity()
-            } else {
-                openAuthActivity()
+                return@first true
             }
         }
     }
