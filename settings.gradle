@@ -1,5 +1,6 @@
-rootProject.name = "base-modularized"
+rootProject.name = "base-android"
 include ':app'
+include ':presentation'
 include ':data'
 include ':domain'
 include ':utils'

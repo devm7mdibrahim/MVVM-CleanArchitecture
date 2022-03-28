@@ -12,7 +12,7 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.aait.base"
+        applicationId ApplicationId.id
         minSdk 21
         targetSdk 31
         versionCode 1
@@ -41,24 +41,10 @@ android {
 }
 
 dependencies {
+    implementation project(':presentation')
     implementation project(':data')
     implementation project(':domain')
     implementation project(':utils')
-
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.4.1'
-    implementation 'com.google.android.material:material:1.5.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-
-    implementation Dependencies.navigation_fragment
-    implementation Dependencies.navigation_ui
-
-    implementation 'com.akexorcist:localization:1.2.10'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
-    //GIF_IMAGE_VIEW
-    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.19'
 
     implementation Compilers.hilt_android
     kapt Compilers.hilt_android_compiler

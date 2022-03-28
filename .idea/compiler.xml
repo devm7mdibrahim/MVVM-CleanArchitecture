@@ -2,9 +2,15 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel target="1.8">
+      <module name="base-android.app" target="11" />
+      <module name="base-android.buildSrc" target="11" />
+      <module name="base-android.data" target="11" />
+      <module name="base-android.presentation" target="11" />
+      <module name="base-android.utils" target="11" />
       <module name="base-modularized.app" target="11" />
       <module name="base-modularized.buildSrc" target="11" />
       <module name="base-modularized.data" target="11" />
+      <module name="base-modularized.presentation" target="11" />
       <module name="base-modularized.utils" target="11" />
       <module name="base-modules.app" target="11" />
       <module name="base-modules.data" target="11" />

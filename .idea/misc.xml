@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/awamer/base-android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.171" />
+        <entry key="..\:/AndroidStudioProjects/awamer/base-android/presentation/src/main/res/drawable/bg_sender_message.xml" value="0.171" />
+        <entry key="..\:/AndroidStudioProjects/awamer/base-android/presentation/src/main/res/layout/activity_home.xml" value="0.11302083333333333" />
+        <entry key="..\:/AndroidStudioProjects/awamer/base-android/presentation/src/main/res/layout/fragment_home.xml" value="0.11302083333333333" />
+        <entry key="..\:/AndroidStudioProjects/awamer/base-android/presentation/src/main/res/layout/fragment_login.xml" value="0.11302083333333333" />
+        <entry key="..\:/AndroidStudioProjects/awamer/base-android/presentation/src/main/res/layout/fragment_notifications.xml" value="0.11302083333333333" />
+        <entry key="..\:/AndroidStudioProjects/awamer/base-android/presentation/src/main/res/layout/fragment_profile.xml" value="0.11302083333333333" />
+        <entry key="..\:/AndroidStudioProjects/awamer/base-android/presentation/src/main/res/layout/fragment_register.xml" value="0.11302083333333333" />
+        <entry key="..\:/AndroidStudioProjects/awamer/base-android/presentation/src/main/res/layout/fragment_splash.xml" value="0.11302083333333333" />
+        <entry key="..\:/AndroidStudioProjects/awamer/base-android/presentation/src/main/res/menu/home_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidStudioProjects/awamer/base-android/utils/src/main/res/drawable/bg_top_rounded_white.xml" value="0.171" />
+        <entry key="..\:/AndroidStudioProjects/awamer/base-android/utils/src/main/res/drawable/ic_back.xml" value="0.171" />
         <entry key="..\:/Users/USER/StudioProjects/BaseModules/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.146" />
         <entry key="..\:/Users/USER/StudioProjects/BaseModules/app/src/main/res/drawable/bg_splash.xml" value="0.146" />
         <entry key="..\:/Users/USER/StudioProjects/BaseModules/app/src/main/res/drawable/ic_launcher_background.xml" value="0.146" />

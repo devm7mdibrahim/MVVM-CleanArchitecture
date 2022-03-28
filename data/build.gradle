@@ -61,8 +61,8 @@ dependencies {
     api Dependencies.moshi_kotlin
     api Dependencies.gson
 
-    implementation Dependencies.room_runtime
-    implementation Dependencies.room_ktx
+    api Dependencies.room_runtime
+    api Dependencies.room_ktx
     kapt Compilers.room_compiler
 
     api Dependencies.socket_io

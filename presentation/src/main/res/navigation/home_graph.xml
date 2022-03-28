@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/home_graph"
+    app:startDestination="@id/homeContainerFragment">
+
+    <fragment
+        android:id="@+id/homeContainerFragment"
+        android:name="com.devm7mdibrahim.presentation.cycles.home_cycle.fragment.home_container.HomeContainerFragment"
+        android:label="fragment_home_container" />
+</navigation>

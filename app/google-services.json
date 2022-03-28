@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "553589395941",
-    "project_id": "awamer-base-modules",
-    "storage_bucket": "awamer-base-modules.appspot.com"
+    "project_number": "35622279526",
+    "project_id": "base-android-27992",
+    "storage_bucket": "base-android-27992.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:553589395941:android:aadfe070af22228a56df0c",
+        "mobilesdk_app_id": "1:35622279526:android:b4def4dc1449b3d1f3d0a7",
         "android_client_info": {
-          "package_name": "com.aait.base"
+          "package_name": "com.devm7mdibrahim.baseandroid"
         }
       },
       "oauth_client": [
         {
-          "client_id": "553589395941-ijh0fbn6hrnrjon3cg1qg1d2q6jkrfje.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.aait.base",
-            "certificate_hash": "73193a24061b4b321d2740e3ef1fad8c8ea5785d"
-          }
-        },
-        {
-          "client_id": "553589395941-9tghmbkkf6qe4mn9nn4jf677ss4obeh2.apps.googleusercontent.com",
+          "client_id": "35622279526-kepnaj5e8hvhqmlhk3i20ui539ib46r6.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBiwe-DjpP5Fcuih0dOQ-hGEMwG22Qmv6Y"
+          "current_key": "AIzaSyCQC_iW96x0V2jC3LdwiBqfVWrFobvjDqM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "553589395941-9tghmbkkf6qe4mn9nn4jf677ss4obeh2.apps.googleusercontent.com",
+              "client_id": "35622279526-kepnaj5e8hvhqmlhk3i20ui539ib46r6.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

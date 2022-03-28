@@ -1,3 +1,3 @@
 object ApplicationId {
-    const val id = "com.aait.sa"
+    const val id = "com.devm7mdibrahim.baseandroid"
 }
