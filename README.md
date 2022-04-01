@@ -6,10 +6,10 @@
 - coding in kotlin language
 
 # Modules
-- Domain: contains bussiness logic
+- Domain: contains business logic
 - Data: contains data sources
-- presentation: containts ui 
-- utils: contains common utils fuctions that are usefull for fast coding
+- presentation: contains ui
+- utils: contains common utils functions that are useful for fast coding
 
 # Technologies
 - Dagger-Hilt for dependency injection
