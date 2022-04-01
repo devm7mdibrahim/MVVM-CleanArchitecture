@@ -21,6 +21,13 @@ object NetworkConstants {
         const val EXCEPTION = "exception"
     }
 
+    object FailRequestCode {
+        const val FAIL = 400
+        const val UN_AUTH = 401
+        const val BLOCKED = 423
+        const val EXCEPTION = 500
+    }
+
     object NetworkParams {
         const val PHONE = "phone"
         const val PASSWORD = "password"

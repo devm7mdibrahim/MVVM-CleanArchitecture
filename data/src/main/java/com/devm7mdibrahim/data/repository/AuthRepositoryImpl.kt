@@ -30,7 +30,7 @@ class AuthRepositoryImpl @Inject constructor(private val authDataSource: AuthDat
         email: String,
         password: String,
         avatar: String?
-    ): Flow<DataState<BaseResponse<AuthData>>> = flow {
+    ): Flow<DataState<BaseResponse<AuthData>>> = safeApiCall {
         authDataSource.register(
             name = name,
             phone = phone,

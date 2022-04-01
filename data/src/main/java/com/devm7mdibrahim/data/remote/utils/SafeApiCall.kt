@@ -1,15 +1,14 @@
 package com.devm7mdibrahim.data.remote.utils
 
+import com.devm7mdibrahim.data.remote.utils.NetworkConstants.FailRequestCode.BLOCKED
+import com.devm7mdibrahim.data.remote.utils.NetworkConstants.FailRequestCode.EXCEPTION
+import com.devm7mdibrahim.data.remote.utils.NetworkConstants.FailRequestCode.FAIL
+import com.devm7mdibrahim.data.remote.utils.NetworkConstants.FailRequestCode.UN_AUTH
 import com.devm7mdibrahim.data.remote.utils.NetworkConstants.NETWORK_TIMEOUT
-import com.devm7mdibrahim.data.remote.utils.NetworkConstants.RequestKeys.BLOCKED
-import com.devm7mdibrahim.data.remote.utils.NetworkConstants.RequestKeys.EXCEPTION
-import com.devm7mdibrahim.data.remote.utils.NetworkConstants.RequestKeys.FAIL
-import com.devm7mdibrahim.data.remote.utils.NetworkConstants.RequestKeys.NEED_ACTIVE
-import com.devm7mdibrahim.data.remote.utils.NetworkConstants.RequestKeys.SUCCESS
-import com.devm7mdibrahim.data.remote.utils.NetworkConstants.RequestKeys.UN_AUTH
 import com.devm7mdibrahim.domain.entities.BaseResponse
 import com.devm7mdibrahim.domain.exceptions.NetworkExceptions
 import com.devm7mdibrahim.domain.util.DataState
+import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.flow.*
@@ -32,30 +31,11 @@ suspend fun <T> safeApiCall(
 }.flowOn(Dispatchers.IO)
 
 fun <T> handleSuccess(response: T): DataState<T> {
-    if (response != null) {
-        val baseResponse = response as BaseResponse<*>
-        return when (baseResponse.key) {
-            SUCCESS -> {
-                DataState.Success(response)
-            }
-            FAIL -> {
-                DataState.Error(NetworkExceptions.CustomException(baseResponse.msg))
-            }
-            NEED_ACTIVE -> {
-                DataState.Error(NetworkExceptions.NeedActiveException(baseResponse.msg))
-            }
-            UN_AUTH, BLOCKED -> {
-                DataState.Error(NetworkExceptions.AuthorizationException)
-            }
-            EXCEPTION -> {
-                DataState.Error(NetworkExceptions.CustomException(baseResponse.msg))
-            }
-            else ->
-                DataState.Error(NetworkExceptions.UnknownException)
-        }
+    return if (response != null) {
+        DataState.Success(response)
+    } else {
+        DataState.Error(NetworkExceptions.UnknownException)
     }
-
-    return DataState.Error(NetworkExceptions.UnknownException)
 }
 
 fun <T> handleError(it: Throwable): DataState<T> {
@@ -84,10 +64,12 @@ fun <T> handleError(it: Throwable): DataState<T> {
 }
 
 private fun convertErrorBody(throwable: HttpException): Exception {
+    val errorBody = throwable.response()?.errorBody()?.charStream()
+    val response = Gson().fromJson(errorBody, BaseResponse::class.java)
     return when (throwable.code()) {
-        401, 419 -> NetworkExceptions.AuthorizationException
-        404 -> NetworkExceptions.NotFoundException
-        500 -> NetworkExceptions.ServerException
+        FAIL -> NetworkExceptions.CustomException(response.msg)
+        UN_AUTH, BLOCKED -> NetworkExceptions.AuthorizationException
+        EXCEPTION -> NetworkExceptions.ServerException
         else -> NetworkExceptions.UnknownException
     }
 }
