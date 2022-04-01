@@ -1,6 +1,6 @@
 # base-android
 
-- Its my base code for intermediate and small projects
+- This is the base code that I prefer to work in small and medium projects.
 
 - using clean architecture and MVVM architecture pattern
 - coding in kotlin language
