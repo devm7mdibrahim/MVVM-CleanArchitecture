@@ -20,7 +20,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object PreferencesModule {
 
-    private const val PREFERENCE_NAME = "marsol_preferences"
+    private const val PREFERENCE_NAME = "app_preferences"
 
     @Provides
     @Singleton

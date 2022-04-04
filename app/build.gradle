@@ -41,10 +41,10 @@ android {
 }
 
 dependencies {
-    implementation project(':presentation')
-    implementation project(':data')
-    implementation project(':domain')
-    implementation project(':utils')
+    api project(':presentation')
+    api project(':data')
+    api project(':domain')
+    api project(':utils')
 
     implementation Compilers.hilt_android
     kapt Compilers.hilt_android_compiler

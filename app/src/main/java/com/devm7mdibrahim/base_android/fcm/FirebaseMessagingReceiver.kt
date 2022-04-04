@@ -41,7 +41,7 @@ class FirebaseMessagingReceiver : FirebaseMessagingService() {
         if (!remoteMessage.data.isNullOrEmpty()) {
             remoteMessage.data.onPrintLog()
             EventBus.getDefault().post(remoteMessage.data)
-            displayNotification(remoteMessage.data)
+            getNotificationData(remoteMessage.data)
         }
     }
 
@@ -52,7 +52,7 @@ class FirebaseMessagingReceiver : FirebaseMessagingService() {
         }
     }
 
-    private fun displayNotification(data: MutableMap<String, String>) {
+    private fun getNotificationData(data: MutableMap<String, String>) {
         var title: String?
         var message: String?
 
@@ -67,28 +67,28 @@ class FirebaseMessagingReceiver : FirebaseMessagingService() {
                 message = notificationItem.messageEn ?: ""
             }
 
-//            showNotification(
-//                title = title,
-//                message = message,
-//                pendingIntent = getPendingIntent(notificationItem)
-//            )
+            showNotification(
+                title = title,
+                message = message,
+                pendingIntent = getPendingIntent(notificationItem)
+            )
         }
     }
 
-//    private fun getPendingIntent(notificationItem: NotificationItem): PendingIntent {
-//        return when (notificationItem.type) {
-//
-//            else -> navigateToHomeIntent()
-//        }
-//    }
-//
-//    private fun navigateToHomeIntent(): PendingIntent {
-//        return NavDeepLinkBuilder(applicationContext)
-//            .setGraph(R.navigation.home_graph)
-//            .setComponentName(HomeActivity::class.java)
-//            .setDestination(R.id.homeFragment)
-//            .createPendingIntent()
-//    }
+    private fun getPendingIntent(notificationItem: NotificationItem): PendingIntent {
+        return when (notificationItem.type) {
+
+            else -> navigateToHomeIntent()
+        }
+    }
+
+    private fun navigateToHomeIntent(): PendingIntent {
+        return NavDeepLinkBuilder(applicationContext)
+            .setGraph(com.devm7mdibrahim.presentation.R.navigation.home_graph)
+            .setComponentName(HomeActivity::class.java)
+            .setDestination(com.devm7mdibrahim.presentation.R.id.homeContainerFragment)
+            .createPendingIntent()
+    }
 
 
     private fun showNotification(title: String?, message: String?, pendingIntent: PendingIntent) {
