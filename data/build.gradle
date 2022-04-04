@@ -52,8 +52,8 @@ android {
 dependencies {
     api project(':domain')
 
-    implementation Dependencies.datastore
-    implementation Dependencies.datastore_preference
+    api Dependencies.datastore
+    api Dependencies.datastore_preference
 
     api Dependencies.retrofit
     api Dependencies.logging_interceptor

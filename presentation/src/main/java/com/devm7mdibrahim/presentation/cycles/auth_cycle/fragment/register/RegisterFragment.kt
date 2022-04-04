@@ -7,7 +7,6 @@ import com.devm7mdibrahim.domain.util.DataState
 import com.devm7mdibrahim.presentation.R
 import com.devm7mdibrahim.presentation.base.BaseFragment
 import com.devm7mdibrahim.presentation.databinding.FragmentRegisterBinding
-import com.devm7mdibrahim.presentation.utils.applyCommonSideEffects
 import com.devm7mdibrahim.utils.extensions.onPrintLog
 import com.devm7mdibrahim.utils.extensions.showToast
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,7 +29,7 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
             viewModel.register(
                 name = "Mohamed",
                 phone = "01024510687",
-                email = "mohamed@gmail.com",
+                email = "dev.m7mdibrahim@gmail.com",
                 password = "123456",
                 avatar = avatar
             )
@@ -56,12 +55,12 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
                                 requireContext().showToast(getString(R.string.error_invalid_email))
                             }
                             else -> {
-                                it.applyCommonSideEffects(this@RegisterFragment)
+                                it.applyCommonSideEffects()
                             }
                         }
                     }
                     else -> {
-                        it.applyCommonSideEffects(this@RegisterFragment) {
+                        it.applyCommonSideEffects {
                             it.data?.onPrintLog("userData")
                         }
                     }

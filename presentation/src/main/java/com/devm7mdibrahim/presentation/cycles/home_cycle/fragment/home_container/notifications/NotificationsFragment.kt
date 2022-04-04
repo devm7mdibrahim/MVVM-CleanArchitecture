@@ -10,7 +10,4 @@ class NotificationsFragment : BaseFragment<FragmentNotificationsBinding>(Fragmen
 
     override val viewModel by viewModels<NotificationsViewModel>()
 
-    override fun afterCreateView() {
-
-    }
 }

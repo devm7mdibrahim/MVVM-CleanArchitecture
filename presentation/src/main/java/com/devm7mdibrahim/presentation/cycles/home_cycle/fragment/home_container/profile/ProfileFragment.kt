@@ -10,7 +10,4 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
 
     override val viewModel by viewModels<ProfileViewModel>()
 
-    override fun afterCreateView() {
-
-    }
 }

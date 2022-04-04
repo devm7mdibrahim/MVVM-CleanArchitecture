@@ -8,7 +8,6 @@ import com.devm7mdibrahim.domain.util.DataState
 import com.devm7mdibrahim.presentation.R
 import com.devm7mdibrahim.presentation.base.BaseFragment
 import com.devm7mdibrahim.presentation.databinding.FragmentLoginBinding
-import com.devm7mdibrahim.presentation.utils.applyCommonSideEffects
 import com.devm7mdibrahim.utils.extensions.fetchText
 import com.devm7mdibrahim.utils.extensions.onClick
 import com.devm7mdibrahim.utils.extensions.showToast
@@ -59,12 +58,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
                                 requireContext().showToast(getString(R.string.error_invalid_password))
                             }
                             else -> {
-                                it.applyCommonSideEffects(this@LoginFragment)
+                                it.applyCommonSideEffects()
                             }
                         }
                     }
                     else -> {
-                        it.applyCommonSideEffects(this@LoginFragment) {
+                        it.applyCommonSideEffects {
                             it.data?.let { userData -> saveUserData(userData) }
                         }
                     }

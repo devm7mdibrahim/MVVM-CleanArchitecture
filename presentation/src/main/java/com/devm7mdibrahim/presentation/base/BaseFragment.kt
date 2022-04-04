@@ -8,22 +8,22 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
+import com.devm7mdibrahim.domain.entities.BaseResponse
+import com.devm7mdibrahim.domain.exceptions.NetworkExceptions
+import com.devm7mdibrahim.domain.util.DataState
 import com.devm7mdibrahim.presentation.cycles.auth_cycle.activity.AuthActivity
-import com.devm7mdibrahim.presentation.utils.Inflate
-import com.devm7mdibrahim.presentation.utils.NetworkExtensionsActions
-import com.devm7mdibrahim.utils.common.NetworkHelper
+import com.devm7mdibrahim.presentation.utils.getIsCommonException
 import com.devm7mdibrahim.utils.common.ProgressUtil
-import com.devm7mdibrahim.utils.extensions.*
+import com.devm7mdibrahim.utils.extensions.ToastType
+import com.devm7mdibrahim.utils.extensions.showToast
 import javax.inject.Inject
 
-abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) : Fragment(),
-    NetworkExtensionsActions {
+typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
+
+abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) : Fragment() {
 
     @Inject
     lateinit var progressUtil: ProgressUtil
-
-    @Inject
-    lateinit var networkHelper: NetworkHelper
 
     abstract val viewModel: BaseViewModel
 
@@ -35,9 +35,7 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) 
         startObserver()
     }
 
-    open fun startObserver() {
-
-    }
+    open fun startObserver() {}
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,17 +44,14 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) 
     ): View? {
         if (_binding == null) {
             _binding = inflate.invoke(inflater, container, false)
-            onCreateView()
+            onCreateBinding()
         }
-        afterCreateView()
         handleClicks()
 
         return binding.root
     }
 
-    open fun onCreateView() {}
-
-    open fun afterCreateView() {}
+    open fun onCreateBinding() {}
 
     open fun handleClicks() {}
 
@@ -65,29 +60,52 @@ abstract class BaseFragment<VB : ViewBinding>(private val inflate: Inflate<VB>) 
         _binding = null
     }
 
-    override fun onLoad(showLoading: Boolean) {
-        progressUtil.statusProgress(showLoading)
+    protected fun <T> DataState<T>.applyCommonSideEffects(
+        showLoading: Boolean = true,
+        showSuccessToast: Boolean = true,
+        onSuccess: (T) -> Unit = {}
+    ) {
+        when (this) {
+            is DataState.Loading -> {
+                if (showLoading) progressUtil.showProgress()
+            }
+
+            is DataState.Success -> {
+                if (showSuccessToast) requireContext().showToast(
+                    (data as BaseResponse<*>).msg,
+                    ToastType.SUCCESS
+                )
+                onSuccess(this.data)
+            }
+
+            is DataState.Error -> {
+                progressUtil.hideProgress()
+                handleError(throwable)
+            }
+
+            DataState.Idle -> {
+                progressUtil.hideProgress()
+            }
+        }
     }
 
-    override fun onCommonError(exceptionMsgId: Int) {
-        requireContext().showToast(getString(exceptionMsgId))
-    }
+    private fun handleError(throwable: Throwable) {
+        when (throwable) {
+            is NetworkExceptions.AuthorizationException -> {
+                onLogout()
+            }
 
-    override fun onShowSuccessToast(msg: String?) {
-        requireContext().showToast(msg, ToastType.SUCCESS)
-    }
+            is NetworkExceptions.NeedActiveException -> {
+                requireContext().showToast(throwable.msg, ToastType.WARNING)
+            }
 
-    override fun onFail(msg: String?) {
-        requireContext().showToast(msg)
-    }
+            is NetworkExceptions.CustomException -> {
+                requireContext().showToast(throwable.msg)
+            }
 
-    override fun authorizationNeedActive(msg: String) {
-        requireContext().showToast(msg, ToastType.WARNING)
-    }
-
-    override fun authorizationFail() {
-        requireContext().openAccountDeletedDialog {
-            onLogout()
+            else -> {
+                requireContext().showToast(getString(throwable.getIsCommonException()))
+            }
         }
     }
 

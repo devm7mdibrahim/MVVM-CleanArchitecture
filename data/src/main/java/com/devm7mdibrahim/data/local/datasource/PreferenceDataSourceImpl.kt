@@ -1,20 +1,14 @@
 package com.devm7mdibrahim.data.local.datasource
 
-import android.content.Context
+import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.*
-import androidx.datastore.preferences.preferencesDataStore
 import com.devm7mdibrahim.data.datasource.PreferenceDataSource
-import com.devm7mdibrahim.data.local.utils.PreferenceConstants
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-private val Context.dataStore by preferencesDataStore(PreferenceConstants.PREFERENCE_NAME)
-
-class PreferenceDataSourceImpl @Inject constructor(context: Context) :
+class PreferenceDataSourceImpl @Inject constructor(private val dataStore: DataStore<Preferences>) :
     PreferenceDataSource {
-
-    private val dataStore = context.dataStore
 
     override suspend fun getValue(key: String, default: Any?): Flow<Any?> {
         return dataStore.data.map {

@@ -1,6 +1,10 @@
 package com.devm7mdibrahim.data.di
 
 import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.PreferenceDataStoreFactory
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStoreFile
 import com.devm7mdibrahim.data.datasource.PreferenceDataSource
 import com.devm7mdibrahim.data.local.datasource.PreferenceDataSourceImpl
 import com.devm7mdibrahim.data.repository.PreferenceRepositoryImpl
@@ -16,10 +20,21 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object PreferencesModule {
 
+    private const val PREFERENCE_NAME = "marsol_preferences"
+
     @Provides
     @Singleton
-    fun providePreferencesDataSource(@ApplicationContext context: Context): PreferenceDataSource =
-        PreferenceDataSourceImpl(context)
+    fun providePreferencesDataStore(@ApplicationContext appContext: Context): DataStore<Preferences> =
+        PreferenceDataStoreFactory.create(
+            produceFile = {
+                appContext.preferencesDataStoreFile(PREFERENCE_NAME)
+            }
+        )
+
+    @Provides
+    @Singleton
+    fun providePreferencesDataSource(dataStore: DataStore<Preferences>): PreferenceDataSource =
+        PreferenceDataSourceImpl(dataStore)
 
     @Provides
     @Singleton

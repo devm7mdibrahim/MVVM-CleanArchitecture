@@ -15,10 +15,6 @@ class HomeContainerFragment :
 
     override val viewModel by viewModels<HomeContainerViewModel>()
 
-    override fun afterCreateView() {
-
-    }
-
     override fun onResume() {
         super.onResume()
         setupBottomNavigationView()
