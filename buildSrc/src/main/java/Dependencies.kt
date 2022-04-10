@@ -15,7 +15,8 @@ object Dependencies {
         "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:${Versions.coroutines_play_services}"
 
 
-    const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
+    const val javaxAnnotation = "javax.annotation:jsr250-api:${Versions.javaxAnnotationVersion}"
+    const val javaxInject = "javax.inject:javax.inject:${Versions.javaxInjectVersion}"
 
     const val navigation_fragment =
         "androidx.navigation:navigation-fragment-ktx:${Versions.nav_components}"

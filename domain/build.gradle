@@ -9,7 +9,8 @@ java {
 }
 
 dependencies {
-    implementation Dependencies.dagger
+    implementation Dependencies.javaxAnnotation
+    implementation Dependencies.javaxInject
 
     implementation Dependencies.coroutine
     implementation Dependencies.coroutine_android

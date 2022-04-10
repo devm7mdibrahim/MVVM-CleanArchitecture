@@ -58,4 +58,7 @@ object Versions {
     const val version_kotlin_coroutines = "1.3.7"
     const val version_retrofit_coroutines_adapter = "0.9.2"
     const val circle_image = "3.1.0"
+
+    const val javaxAnnotationVersion = "1.0"
+    const val javaxInjectVersion = "1"
 }
