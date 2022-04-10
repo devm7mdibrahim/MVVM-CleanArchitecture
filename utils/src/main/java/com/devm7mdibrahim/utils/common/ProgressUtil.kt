@@ -1,5 +1,6 @@
 package com.devm7mdibrahim.utils.common
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
@@ -21,20 +22,22 @@ class ProgressUtil @Inject constructor(val context: Context) {
         init()
     }
 
+    @SuppressLint("InflateParams")
     private fun init() {
         dialog = AlertDialog.Builder(context).create()
-        val inflate = LayoutInflater.from(context).inflate(R.layout.progress, null)
-        dialog?.setView(inflate)
-        dialog?.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog?.setCancelable(false)
+        dialog?.apply {
+            val inflate = LayoutInflater.from(context).inflate(R.layout.progress, null)
+            setView(inflate)
+            requestWindowFeature(Window.FEATURE_NO_TITLE)
+            setCancelable(false)
+        }
 
-        if (dialog?.window != null) {
-            dialog?.window!!
-                .setLayout(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-                )
-            dialog?.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog?.window?.apply {
+            setLayout(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         }
     }
 
@@ -48,17 +51,7 @@ class ProgressUtil @Inject constructor(val context: Context) {
 
     fun hideProgress() {
         if (dialog?.isShowing == true) {
-            dialog?.cancel()
-            dialog?.hide()
+            dialog?.dismiss()
         }
     }
-
-    fun statusProgress(status: Boolean) {
-        if (status) {
-            showProgress()
-        } else {
-            hideProgress()
-        }
-    }
-
 }
