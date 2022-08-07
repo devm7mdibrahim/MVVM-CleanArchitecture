@@ -1,6 +1,5 @@
 package com.devm7mdibrahim.utils.common
 
-import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
@@ -22,11 +21,10 @@ class ProgressUtil @Inject constructor(val context: Context) {
         init()
     }
 
-    @SuppressLint("InflateParams")
     private fun init() {
         dialog = AlertDialog.Builder(context).create()
         dialog?.apply {
-            val inflate = LayoutInflater.from(context).inflate(R.layout.progress, null)
+            val inflate = LayoutInflater.from(context).inflate(R.layout.progress, findViewById(android.R.id.content),false)
             setView(inflate)
             requestWindowFeature(Window.FEATURE_NO_TITLE)
             setCancelable(false)

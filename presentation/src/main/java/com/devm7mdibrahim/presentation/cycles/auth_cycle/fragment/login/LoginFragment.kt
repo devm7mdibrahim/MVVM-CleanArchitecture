@@ -8,12 +8,8 @@ import com.devm7mdibrahim.domain.util.DataState
 import com.devm7mdibrahim.presentation.R
 import com.devm7mdibrahim.presentation.base.BaseFragment
 import com.devm7mdibrahim.presentation.databinding.FragmentLoginBinding
-import com.devm7mdibrahim.utils.extensions.fetchText
-import com.devm7mdibrahim.utils.extensions.onClick
-import com.devm7mdibrahim.utils.extensions.showToast
-import com.devm7mdibrahim.utils.extensions.toJson
+import com.devm7mdibrahim.utils.extensions.*
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 
 @AndroidEntryPoint
@@ -46,26 +42,24 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     }
 
     private fun loginObserver() {
-        lifecycleScope.launchWhenStarted {
-            viewModel.loginResponse.collect { it ->
-                when (it) {
-                    is DataState.Error -> {
-                        when (it.throwable) {
-                            is ValidationException.InValidPhoneException -> {
-                                requireContext().showToast(getString(R.string.error_invalid_phone))
-                            }
-                            is ValidationException.InValidPasswordException -> {
-                                requireContext().showToast(getString(R.string.error_invalid_password))
-                            }
-                            else -> {
-                                it.applyCommonSideEffects()
-                            }
+        collectLifecycleFlow(viewModel.loginResponse) {
+            when (it) {
+                is DataState.Error -> {
+                    when (it.throwable) {
+                        is ValidationException.InValidPhoneException -> {
+                            requireContext().showToast(getString(R.string.error_invalid_phone))
+                        }
+                        is ValidationException.InValidPasswordException -> {
+                            requireContext().showToast(getString(R.string.error_invalid_password))
+                        }
+                        else -> {
+                            it.applyCommonSideEffects()
                         }
                     }
-                    else -> {
-                        it.applyCommonSideEffects {
-                            it.data?.let { userData -> saveUserData(userData) }
-                        }
+                }
+                else -> {
+                    it.applyCommonSideEffects { response ->
+                        response.data?.let { userData -> saveUserData(userData) }
                     }
                 }
             }

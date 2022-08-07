@@ -1,5 +1,5 @@
 object Versions {
-    const val gradle = "7.2.0-beta03"
+    const val gradle = "7.2.1"
     const val compilesdk = 30
     const val buildTool = 30
     const val buildToolsVersion = "30.0.3"

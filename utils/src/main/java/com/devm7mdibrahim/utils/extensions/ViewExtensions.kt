@@ -101,15 +101,9 @@ fun ImageView.loadImageFromUrl(url: String?) {
         .into(this)
 }
 
-fun ImageView.loadImageFromUri(context: Context, url: String?) {
+fun ImageView.loadImageFromDrawable(resId: Int) {
     Glide.with(context)
-        .load(url)
-        .into(this)
-}
-
-fun ImageView.loadImageFromDrawable(context: Context, url: Int) {
-    Glide.with(context)
-        .load(url)
+        .load(resId)
         .into(this)
 }
 
